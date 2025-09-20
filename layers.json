@@ -1,0 +1,112 @@
+[
+  {
+    "layer": "Provisioning",
+    "practices": [
+      {
+        "id": "HP6",
+        "name": "Infrastructure as Code"
+      },
+      {
+        "id": "HP18",
+        "name": "Multi-Cluster & Multi-Region"
+      }
+    ]
+  },
+  {
+    "layer": "Runtime",
+    "practices": [
+      {
+        "id": "HP2",
+        "name": "Container Runtime Management"
+      },
+      {
+        "id": "HP9",
+        "name": "Streaming & Messaging"
+      },
+      {
+        "id": "HP10",
+        "name": "Serverless Computing"
+      },
+      {
+        "id": "HP12",
+        "name": "Data Management & Persistence"
+      }
+    ]
+  },
+  {
+    "layer": "Orchestration & Management",
+    "practices": [
+      {
+        "id": "HP3",
+        "name": "Container Orchestration"
+      },
+      {
+        "id": "HP4",
+        "name": "Service Mesh & Service Discovery"
+      },
+      {
+        "id": "HP5",
+        "name": "Ingress & API Gateway"
+      }
+    ]
+  },
+  {
+    "layer": "App Definition & Development",
+    "practices": [
+      {
+        "id": "HP1",
+        "name": "Container Build & Image Management"
+      },
+      {
+        "id": "HP7",
+        "name": "Continuous Integration & Delivery"
+      },
+      {
+        "id": "HP11",
+        "name": "Service Design (Microservices)"
+      },
+      {
+        "id": "HP19",
+        "name": "Platform Engineering (Internal Developer Platforms)"
+      }
+    ]
+  },
+  {
+    "layer": "Observability & Analysis",
+    "practices": [
+      {
+        "id": "HP8",
+        "name": "Application Monitoring"
+      },
+      {
+        "id": "HP13",
+        "name": "Chaos Engineering"
+      },
+      {
+        "id": "HP14",
+        "name": "Performance Engineering"
+      }
+    ]
+  },
+  {
+    "layer": "Cross-Cutting Concerns",
+    "practices": [
+      {
+        "id": "HP15",
+        "name": "Identity & Access Management"
+      },
+      {
+        "id": "HP16",
+        "name": "Compliance & Governance"
+      },
+      {
+        "id": "HP17",
+        "name": "Data Protection & Disaster Recovery"
+      },
+      {
+        "id": "HP20",
+        "name": "Cost Management & FinOps"
+      }
+    ]
+  }
+]

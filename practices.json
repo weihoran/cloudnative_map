@@ -1,0 +1,1944 @@
+{
+  "HP1": {
+    "name": "Container Build & Image Management",
+    "sub_practices": [
+      {
+        "index": "HP1_1",
+        "name": "Multi-stage & reproducible builds",
+        "description": "Build images with deterministic, portable steps and isolated stages to reduce size and improve reliability.",
+        "tools": [
+          "Docker BuildKit",
+          "Kaniko",
+          "Podman Build"
+        ]
+      },
+      {
+        "index": "HP1_2",
+        "name": "Minimal/distroless base images",
+        "description": "Use reduced base images with only runtime dependencies to minimize attack surface and CVE exposure.",
+        "tools": [
+          "Google Distroless",
+          "Wolfi",
+          "Alpine"
+        ]
+      },
+      {
+        "index": "HP1_3",
+        "name": "SBOM generation",
+        "description": "Produce a Software Bill of Materials to enumerate packages and libraries for transparency and compliance.",
+        "tools": [
+          "Syft",
+          "Anchore",
+          "SPDX",
+          "CycloneDX"
+        ]
+      },
+      {
+        "index": "HP1_4",
+        "name": "Vulnerability scanning",
+        "description": "Scan container images for known vulnerabilities and misconfigurations during build and pre-deploy.",
+        "tools": [
+          "Trivy",
+          "Grype",
+          "Aqua",
+          "Clair"
+        ]
+      },
+      {
+        "index": "HP1_5",
+        "name": "Policy gates / admission enforcement",
+        "description": "Block non-compliant images by enforcing organizational rules at build, registry, or admission time.",
+        "tools": [
+          "Harbor policy",
+          "OPA",
+          "Kyverno"
+        ]
+      },
+      {
+        "index": "HP1_6",
+        "name": "Image signing & verification",
+        "description": "Sign images and verify signatures at deploy time to ensure integrity and authenticity.",
+        "tools": [
+          "Cosign",
+          "Notary v2"
+        ]
+      },
+      {
+        "index": "HP1_7",
+        "name": "Provenance attestations",
+        "description": "Attach cryptographically verifiable metadata describing the build process and inputs for supply-chain trust.",
+        "tools": [
+          "in-toto",
+          "SLSA"
+        ]
+      },
+      {
+        "index": "HP1_8",
+        "name": "Container registry & distribution",
+        "description": "Store, replicate, and serve images with access controls and efficient regional distribution.",
+        "tools": [
+          "Harbor",
+          "Amazon ECR",
+          "Azure Container Registry",
+          "Google Artifact Registry"
+        ]
+      },
+      {
+        "index": "HP1_9",
+        "name": "Image versioning & tagging",
+        "description": "Apply immutable digests and governance for tags to ensure traceable and stable image references.",
+        "tools": [
+          "OCI/Docker registries",
+          "Harbor",
+          "JFrog Artifactory"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP1_10",
+        "name": "Registry RBAC, retention & geo-replication",
+        "description": "Manage permissions, retention policies, and cross-region replication for image stores.",
+        "tools": [
+          "Harbor",
+          "Amazon ECR",
+          "Azure Container Registry"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP2": {
+    "name": "Container Runtime Management",
+    "sub_practices": [
+      {
+        "index": "HP2_1",
+        "name": "Runtime classes",
+        "description": "Select OCI runtimes for general-purpose, sandboxed, or VM-isolated execution profiles.",
+        "tools": [
+          "runc",
+          "containerd",
+          "CRI-O",
+          "gVisor",
+          "Kata Containers"
+        ]
+      },
+      {
+        "index": "HP2_2",
+        "name": "Rootless/least-privilege runtime",
+        "description": "Run containers without root privileges and with user namespaces for stronger isolation.",
+        "tools": [
+          "Podman",
+          "containerd userns",
+          "CRI-O"
+        ]
+      },
+      {
+        "index": "HP2_3",
+        "name": "CNI networking configuration",
+        "description": "Configure pod networking plugins for connectivity, policy, and performance.",
+        "tools": [
+          "Calico",
+          "Cilium",
+          "Flannel"
+        ]
+      },
+      {
+        "index": "HP2_4",
+        "name": "Security profiles & sandboxing",
+        "description": "Apply kernel security profiles and isolation (seccomp, AppArmor/SELinux) and enforce via policy.",
+        "tools": [
+          "seccomp",
+          "AppArmor",
+          "SELinux",
+          "Kyverno",
+          "OPA"
+        ]
+      },
+      {
+        "index": "HP2_5",
+        "name": "Secrets/config at runtime",
+        "description": "Inject configuration and credentials securely into running workloads.",
+        "tools": [
+          "HashiCorp Vault",
+          "External Secrets Operator",
+          "Sealed Secrets"
+        ]
+      },
+      {
+        "index": "HP2_6",
+        "name": "Device plugins & accelerators",
+        "description": "Expose GPUs, FPGAs, and specialized NICs to pods through device plugins.",
+        "tools": [
+          "NVIDIA Device Plugin",
+          "Intel Device Plugins",
+          "AMD GPU"
+        ]
+      },
+      {
+        "index": "HP2_7",
+        "name": "eBPF runtime security & observability",
+        "description": "Detect and monitor runtime behavior with kernel-level visibility and policies.",
+        "tools": [
+          "Falco",
+          "Cilium Tetragon",
+          "Tracee"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP3": {
+    "name": "Container Orchestration",
+    "sub_practices": [
+      {
+        "index": "HP3_1",
+        "name": "Scheduling & placement policies",
+        "description": "Control pod placement using affinities, taints/tolerations, priority, and preemption.",
+        "tools": [
+          "Kubernetes scheduler",
+          "Volcano"
+        ]
+      },
+      {
+        "index": "HP3_2",
+        "name": "Resource management",
+        "description": "Define requests/limits, QoS classes, quotas, and limit ranges to shape resource usage.",
+        "tools": [
+          "Kubernetes QoS",
+          "ResourceQuota",
+          "LimitRange"
+        ]
+      },
+      {
+        "index": "HP3_3",
+        "name": "Autoscaling",
+        "description": "Scale pods and nodes automatically based on metrics and events.",
+        "tools": [
+          "Horizontal Pod Autoscaler",
+          "Vertical Pod Autoscaler",
+          "Cluster Autoscaler",
+          "KEDA"
+        ]
+      },
+      {
+        "index": "HP3_4",
+        "name": "Service networking & L4 load balancing",
+        "description": "Provide stable virtual IPs and load balancing at L4 for services inside and outside the cluster.",
+        "tools": [
+          "ClusterIP",
+          "NodePort",
+          "LoadBalancer",
+          "kube-proxy (iptables/IPVS)",
+          "MetalLB",
+          "cloud LBs"
+        ]
+      },
+      {
+        "index": "HP3_5",
+        "name": "Network policy enforcement",
+        "description": "Restrict east\u2013west traffic between pods and namespaces using declarative policies.",
+        "tools": [
+          "Calico",
+          "Cilium",
+          "Kube-Router"
+        ]
+      },
+      {
+        "index": "HP3_6",
+        "name": "Workload patterns & replication",
+        "description": "Run stateless, stateful, daemon, and batch workloads with the right controller types.",
+        "tools": [
+          "Deployments",
+          "ReplicaSets",
+          "StatefulSets",
+          "DaemonSets",
+          "Jobs",
+          "CronJobs"
+        ]
+      },
+      {
+        "index": "HP3_7",
+        "name": "Rollouts & rollbacks (progressive delivery)",
+        "description": "Deploy changes safely using controlled rollout strategies and quick reverts.",
+        "tools": [
+          "Kubernetes Deployments",
+          "Argo Rollouts",
+          "Flagger"
+        ]
+      },
+      {
+        "index": "HP3_8",
+        "name": "Health management & self-healing",
+        "description": "Continuously check pod health and restart or replace failed instances automatically.",
+        "tools": [
+          "Liveness probes",
+          "Readiness probes",
+          "Startup probes",
+          "Kubelet"
+        ]
+      },
+      {
+        "index": "HP3_9",
+        "name": "Storage orchestration",
+        "description": "Dynamically provision and attach persistent storage with snapshots and access modes.",
+        "tools": [
+          "CSI drivers",
+          "Rook-Ceph",
+          "AWS EBS CSI",
+          "Portworx",
+          "GCP/Azure CSI"
+        ]
+      },
+      {
+        "index": "HP3_10",
+        "name": "Pod Disruption Budgets (availability safeguards)",
+        "description": "Limit concurrent voluntary disruptions to maintain service availability during changes.",
+        "tools": [
+          "PodDisruptionBudget"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP3_11",
+        "name": "Ephemeral containers for debugging",
+        "description": "Attach temporary debug containers to running pods without restarting them.",
+        "tools": [
+          "kubectl debug",
+          "EphemeralContainers API"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP4": {
+    "name": "Service Mesh & Service Discovery",
+    "sub_practices": [
+      {
+        "index": "HP4_1",
+        "name": "Service registry & discovery",
+        "description": "Resolve service endpoints dynamically via DNS or xDS-backed registries.",
+        "tools": [
+          "Kubernetes DNS",
+          "Envoy/xDS",
+          "Consul",
+          "Eureka",
+          "Zookeeper"
+        ]
+      },
+      {
+        "index": "HP4_2",
+        "name": "mTLS authentication",
+        "description": "Encrypt and authenticate east\u2013west traffic with automatic certificate management.",
+        "tools": [
+          "Istio",
+          "Linkerd",
+          "Consul Connect",
+          "Kuma",
+          "Open Service Mesh",
+          "Envoy"
+        ]
+      },
+      {
+        "index": "HP4_3",
+        "name": "Automatic certificate rotation",
+        "description": "Issue and rotate short-lived workload certificates for zero-trust communication.",
+        "tools": [
+          "Istio Citadel/Istiod",
+          "Linkerd Identity",
+          "Consul CA",
+          "SPIRE",
+          "cert-manager"
+        ]
+      },
+      {
+        "index": "HP4_4",
+        "name": "Request routing & L7 load balancing",
+        "description": "Control traffic routing by host/path/headers and balance requests at L7.",
+        "tools": [
+          "Istio VirtualService",
+          "Envoy routes",
+          "Consul service-router",
+          "Linkerd TrafficSplit",
+          "Kuma TrafficRoute",
+          "SMI"
+        ]
+      },
+      {
+        "index": "HP4_5",
+        "name": "Retries & timeouts",
+        "description": "Improve reliability and tail latency by tuning per-route retries and timeouts.",
+        "tools": [
+          "Envoy",
+          "Istio DestinationRule",
+          "Linkerd ServiceProfile",
+          "Consul proxy config"
+        ]
+      },
+      {
+        "index": "HP4_6",
+        "name": "Circuit breaking & outlier detection",
+        "description": "Protect services by limiting concurrent requests and ejecting unhealthy endpoints.",
+        "tools": [
+          "Envoy",
+          "Istio DestinationRule",
+          "Consul proxy config",
+          "Kuma policies"
+        ]
+      },
+      {
+        "index": "HP4_7",
+        "name": "Service-to-service authorization policies",
+        "description": "Authorize calls between workloads using identity-aware, fine-grained policies.",
+        "tools": [
+          "Istio AuthorizationPolicy",
+          "Consul intentions",
+          "OPA via Envoy ext-authz",
+          "Kuma",
+          "OSM"
+        ]
+      },
+      {
+        "index": "HP4_8",
+        "name": "Mesh-native telemetry",
+        "description": "Emit uniform metrics, traces, and access logs from data-plane proxies without code changes.",
+        "tools": [
+          "Envoy stats",
+          "Prometheus",
+          "Grafana",
+          "OpenTelemetry Collector",
+          "Jaeger",
+          "Zipkin",
+          "Linkerd Viz",
+          "Kiali"
+        ]
+      },
+      {
+        "index": "HP4_9",
+        "name": "Access logging at proxy level",
+        "description": "Capture detailed per-request logs from sidecars for auditing and debugging.",
+        "tools": [
+          "Envoy access logs",
+          "Istio EnvoyFilters",
+          "Consul proxy logs"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP4_10",
+        "name": "Fault injection & traffic mirroring",
+        "description": "Inject faults or mirror live traffic safely to validate resilience in production-like paths.",
+        "tools": [
+          "Istio fault injection",
+          "Envoy fault filter",
+          "Linkerd TrafficSplit"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP4_11",
+        "name": "Multi-cluster & multi-mesh connectivity",
+        "description": "Extend discovery and identity across clusters or federated meshes.",
+        "tools": [
+          "Istio multi-cluster",
+          "Linkerd multicluster",
+          "Consul WAN federation"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP5": {
+    "name": "Ingress & API Gateway",
+    "sub_practices": [
+      {
+        "index": "HP5_1",
+        "name": "TLS termination & SNI/mTLS at edge",
+        "description": "Terminate TLS (and optionally enforce mTLS) for inbound traffic at the cluster edge.",
+        "tools": [
+          "NGINX",
+          "HAProxy",
+          "Envoy",
+          "Kong",
+          "Traefik",
+          "Cloud API Gateways"
+        ]
+      },
+      {
+        "index": "HP5_2",
+        "name": "Dynamic request routing",
+        "description": "Route requests by host/path/headers and integrate with service backends.",
+        "tools": [
+          "NGINX Ingress",
+          "Traefik",
+          "Envoy Gateway",
+          "Kong",
+          "AWS/GCP/Azure API Gateway"
+        ]
+      },
+      {
+        "index": "HP5_3",
+        "name": "Request validation",
+        "description": "Validate request shape, size, or schema at the edge before forwarding to services.",
+        "tools": [
+          "Kong plugins",
+          "Apigee policies",
+          "Tyk middleware",
+          "Envoy ext-authn"
+        ]
+      },
+      {
+        "index": "HP5_4",
+        "name": "Authentication & authorization at edge",
+        "description": "Enforce OIDC/OAuth2/JWT/API key authentication and authorize API consumers.",
+        "tools": [
+          "Kong",
+          "Tyk",
+          "Apigee",
+          "AWS API Gateway (Cognito)"
+        ]
+      },
+      {
+        "index": "HP5_5",
+        "name": "Rate limiting & quotas",
+        "description": "Protect services with per-consumer rate limits and quotas.",
+        "tools": [
+          "Kong",
+          "Tyk",
+          "Apigee",
+          "Envoy rate limit service"
+        ]
+      },
+      {
+        "index": "HP5_6",
+        "name": "Request/response transformation & protocol bridging",
+        "description": "Transform payloads and bridge protocols (e.g., REST\u2194gRPC, SOAP\u2194REST) at the gateway.",
+        "tools": [
+          "Kong",
+          "Apigee",
+          "Envoy",
+          "MuleSoft"
+        ]
+      },
+      {
+        "index": "HP5_7",
+        "name": "Access control & subscription management",
+        "description": "Manage API consumers, keys, plans, and subscriptions for controlled access.",
+        "tools": [
+          "Kong RBAC/ACL",
+          "Apigee usage plans",
+          "AWS API Gateway usage plans"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP5_8",
+        "name": "Edge observability (logs, metrics, dashboards)",
+        "description": "Collect and visualize edge traffic telemetry for capacity and incident response.",
+        "tools": [
+          "NGINX logs",
+          "Kong Vitals",
+          "Tyk Dashboard",
+          "Apigee analytics"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP5_9",
+        "name": "API lifecycle & developer portal",
+        "description": "Publish docs, version APIs, onboard developers, and enable monetization.",
+        "tools": [
+          "Apigee Developer Portal",
+          "Kong Dev Portal",
+          "MuleSoft API Manager"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP6": {
+    "name": "Infrastructure as Code",
+    "sub_practices": [
+      {
+        "index": "HP6_1",
+        "name": "Declarative resource definition (IaC engines)",
+        "description": "Define infrastructure declaratively for repeatable, idempotent provisioning.",
+        "tools": [
+          "Terraform",
+          "Pulumi",
+          "Ansible",
+          "AWS CDK",
+          "Crossplane"
+        ]
+      },
+      {
+        "index": "HP6_2",
+        "name": "Module reuse & environment composition",
+        "description": "Compose reusable modules/stacks and isolate environments with consistent patterns.",
+        "tools": [
+          "Terraform modules/workspaces",
+          "Terragrunt",
+          "Pulumi Stacks",
+          "Helm charts"
+        ]
+      },
+      {
+        "index": "HP6_3",
+        "name": "State management & drift remediation",
+        "description": "Store state securely and detect/remediate configuration drift.",
+        "tools": [
+          "Terraform Cloud/Enterprise",
+          "Atlantis",
+          "Pulumi state",
+          "Spacelift"
+        ]
+      },
+      {
+        "index": "HP6_4",
+        "name": "Policy as Code enforcement in IaC workflows",
+        "description": "Evaluate plans against organizational policies before apply.",
+        "tools": [
+          "OPA/Conftest",
+          "Checkov custom policies",
+          "Terraform Sentinel",
+          "Regula"
+        ]
+      },
+      {
+        "index": "HP6_5",
+        "name": "IaC security scanning",
+        "description": "Statically analyze IaC for misconfigurations and security issues.",
+        "tools": [
+          "Checkov",
+          "tfsec/Trivy",
+          "KICS",
+          "Terrascan",
+          "Snyk IaC",
+          "Prisma Cloud"
+        ]
+      },
+      {
+        "index": "HP6_6",
+        "name": "IaC testing",
+        "description": "Write automated tests to validate modules and provisioned resources.",
+        "tools": [
+          "Terratest",
+          "Kitchen-Terraform",
+          "InSpec",
+          "pytest-terraform"
+        ]
+      },
+      {
+        "index": "HP6_7",
+        "name": "Secrets & parameter management via IaC",
+        "description": "Inject and manage secrets/parameters in provisioning workflows securely.",
+        "tools": [
+          "SOPS",
+          "HashiCorp Vault",
+          "AWS SSM Parameter Store"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP7": {
+    "name": "Continuous Integration & Delivery",
+    "sub_practices": [
+      {
+        "index": "HP7_1",
+        "name": "Pipeline as Code",
+        "description": "Define CI/CD workflows declaratively for consistent, reviewable automation.",
+        "tools": [
+          "Jenkinsfile",
+          "GitLab CI YAML",
+          "GitHub Actions",
+          "Tekton Pipelines",
+          "Azure Pipelines"
+        ]
+      },
+      {
+        "index": "HP7_2",
+        "name": "Automated build & test execution",
+        "description": "Compile, package, and run unit/integration/e2e tests automatically on change.",
+        "tools": [
+          "JUnit",
+          "pytest",
+          "Cypress",
+          "Maven",
+          "Gradle"
+        ]
+      },
+      {
+        "index": "HP7_3",
+        "name": "Security & quality scanning in CI/CD",
+        "description": "Integrate SAST, DAST, dependency and IaC scanning into pipelines.",
+        "tools": [
+          "Snyk",
+          "Trivy",
+          "SonarQube",
+          "OWASP ZAP",
+          "Checkov"
+        ]
+      },
+      {
+        "index": "HP7_4",
+        "name": "Progressive delivery (canary, blue-green, feature flags)",
+        "description": "Release safely using staged rollouts and feature toggles controlled by pipeline signals.",
+        "tools": [
+          "Argo Rollouts",
+          "Flagger",
+          "LaunchDarkly",
+          "Split.io"
+        ]
+      },
+      {
+        "index": "HP7_5",
+        "name": "GitOps-driven continuous delivery",
+        "description": "Reconcile desired state from Git into runtime environments automatically.",
+        "tools": [
+          "Argo CD",
+          "Flux"
+        ]
+      },
+      {
+        "index": "HP7_6",
+        "name": "Automated rollback & roll-forward",
+        "description": "Revert or advance releases automatically when health checks fail or succeed.",
+        "tools": [
+          "Argo CD",
+          "Spinnaker",
+          "Jenkins X"
+        ]
+      },
+      {
+        "index": "HP7_7",
+        "name": "Pipeline observability & governance",
+        "description": "Measure pipeline health, enforce approvals, and record attestations for supply chain.",
+        "tools": [
+          "Grafana/Prometheus",
+          "Datadog CI Visibility",
+          "Harness",
+          "Tekton Chains"
+        ]
+      },
+      {
+        "index": "HP7_8",
+        "name": "Artifact packaging & repository management (incl. SBOMs)",
+        "description": "Publish and manage build artifacts and SBOMs in centralized repositories.",
+        "tools": [
+          "JFrog Artifactory",
+          "Sonatype Nexus",
+          "GitHub Packages",
+          "Syft/Anchore"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP8": {
+    "name": "Application Monitoring",
+    "sub_practices": [
+      {
+        "index": "HP8_1",
+        "name": "Metrics collection & aggregation",
+        "description": "Collect application and infrastructure metrics to track latency, throughput, errors, and saturation.",
+        "tools": [
+          "Prometheus",
+          "Datadog",
+          "Amazon CloudWatch Metrics"
+        ]
+      },
+      {
+        "index": "HP8_2",
+        "name": "Centralized log aggregation",
+        "description": "Ship and index logs centrally for search, correlation, and retention.",
+        "tools": [
+          "Elastic/ELK",
+          "Loki",
+          "Splunk",
+          "Fluentd",
+          "Fluent Bit"
+        ]
+      },
+      {
+        "index": "HP8_3",
+        "name": "Distributed tracing",
+        "description": "Trace requests across services to diagnose latency and failures end-to-end.",
+        "tools": [
+          "Jaeger",
+          "Zipkin",
+          "OpenTelemetry",
+          "Honeycomb"
+        ]
+      },
+      {
+        "index": "HP8_4",
+        "name": "Dashboards & visualization",
+        "description": "Visualize key indicators and SLOs for operators and developers.",
+        "tools": [
+          "Grafana",
+          "Kibana",
+          "Datadog",
+          "New Relic"
+        ]
+      },
+      {
+        "index": "HP8_5",
+        "name": "Alerting & incident notification",
+        "description": "Generate actionable alerts and route incidents to responders.",
+        "tools": [
+          "Alertmanager",
+          "PagerDuty",
+          "OpsGenie"
+        ]
+      },
+      {
+        "index": "HP8_6",
+        "name": "Synthetic & blackbox monitoring",
+        "description": "Probe endpoints and critical flows to detect user-facing outages proactively.",
+        "tools": [
+          "Blackbox Exporter",
+          "k6",
+          "Pingdom",
+          "Grafana Synthetic Monitoring"
+        ]
+      },
+      {
+        "index": "HP8_7",
+        "name": "Anomaly detection (AI/ML-based monitoring)",
+        "description": "Detect unusual behavior and spikes using machine learning and seasonality models.",
+        "tools": [
+          "Datadog Watchdog",
+          "Splunk ITSI",
+          "Dynatrace Davis"
+        ]
+      },
+      {
+        "index": "HP8_8",
+        "name": "Service topology & dependency mapping",
+        "description": "Discover and map service dependencies for faster fault isolation and impact analysis.",
+        "tools": [
+          "Kiali",
+          "Datadog Service Map",
+          "New Relic Explorer",
+          "Instana"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP9": {
+    "name": "Streaming & Messaging",
+    "sub_practices": [
+      {
+        "index": "HP9_1",
+        "name": "Message brokering & pub-sub",
+        "description": "Decouple producers and consumers using topics/subjects for broadcast or selective delivery.",
+        "tools": [
+          "Apache Kafka",
+          "RabbitMQ",
+          "NATS",
+          "ActiveMQ",
+          "Google Pub/Sub",
+          "AWS SNS"
+        ]
+      },
+      {
+        "index": "HP9_2",
+        "name": "Queueing & consumer groups",
+        "description": "Balance load across consumers and scale-out processing of queued messages.",
+        "tools": [
+          "Kafka consumer groups",
+          "RabbitMQ queues",
+          "Azure Service Bus",
+          "Amazon SQS"
+        ]
+      },
+      {
+        "index": "HP9_3",
+        "name": "Delivery semantics",
+        "description": "Implement at-most-once, at-least-once, or exactly-once delivery guarantees per use case.",
+        "tools": [
+          "Kafka (EOS)",
+          "Apache Pulsar",
+          "RabbitMQ",
+          "NATS JetStream"
+        ]
+      },
+      {
+        "index": "HP9_4",
+        "name": "Schema management & evolution",
+        "description": "Maintain backward/forward-compatible message schemas with registries and validation.",
+        "tools": [
+          "Confluent Schema Registry",
+          "Apicurio",
+          "Redpanda Schema Registry",
+          "Karapace"
+        ]
+      },
+      {
+        "index": "HP9_5",
+        "name": "Dead-letter queues & retry handling",
+        "description": "Route failed messages for later inspection and implement robust retry strategies.",
+        "tools": [
+          "RabbitMQ DLQ",
+          "Kafka DLQ patterns",
+          "AWS SQS DLQ",
+          "Azure Service Bus DLQ"
+        ]
+      },
+      {
+        "index": "HP9_6",
+        "name": "Stream processing & stateful transformations",
+        "description": "Process streams in real time with windows, joins, and stateful operators.",
+        "tools": [
+          "Kafka Streams",
+          "Apache Flink",
+          "ksqlDB",
+          "Spark Structured Streaming"
+        ]
+      },
+      {
+        "index": "HP9_7",
+        "name": "Change Data Capture (CDC)",
+        "description": "Capture database changes as ordered events to integrate systems and analytics.",
+        "tools": [
+          "Debezium",
+          "AWS Database Migration Service",
+          "StreamSets",
+          "Striim"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP9_8",
+        "name": "Geo-replication & disaster recovery",
+        "description": "Replicate topics/queues across regions or clusters for resilience and locality.",
+        "tools": [
+          "Kafka MirrorMaker 2",
+          "Confluent Replicator",
+          "Pulsar geo-replication"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP10": {
+    "name": "Serverless Computing",
+    "sub_practices": [
+      {
+        "index": "HP10_1",
+        "name": "Function packaging & deployment",
+        "description": "Package and deploy functions in managed runtimes with minimal operational overhead.",
+        "tools": [
+          "AWS Lambda",
+          "Azure Functions",
+          "Google Cloud Functions",
+          "OpenFaaS",
+          "Knative"
+        ]
+      },
+      {
+        "index": "HP10_2",
+        "name": "Event triggers & bindings",
+        "description": "Bind functions to events from HTTP, queues, storage, schedules, or custom sources.",
+        "tools": [
+          "AWS EventBridge",
+          "Azure Event Grid",
+          "Google Eventarc",
+          "Knative Eventing"
+        ]
+      },
+      {
+        "index": "HP10_3",
+        "name": "Concurrency control & autoscaling policies",
+        "description": "Control concurrent executions and autoscaling behavior per function or service.",
+        "tools": [
+          "Lambda reserved concurrency",
+          "KEDA",
+          "GCP scaling settings"
+        ]
+      },
+      {
+        "index": "HP10_4",
+        "name": "Cold-start optimization",
+        "description": "Reduce or eliminate cold-start latency via pre-provisioned capacity or snapshotting.",
+        "tools": [
+          "Lambda Provisioned Concurrency",
+          "Lambda SnapStart",
+          "Azure Premium Functions",
+          "Knative reuse"
+        ]
+      },
+      {
+        "index": "HP10_5",
+        "name": "Function versioning & traffic splitting",
+        "description": "Version functions and shift traffic gradually between revisions for safe releases.",
+        "tools": [
+          "Lambda Aliases",
+          "GCP Functions traffic splitting",
+          "Knative revisions"
+        ]
+      },
+      {
+        "index": "HP10_6",
+        "name": "Serverless containers (CaaS)",
+        "description": "Run containers with serverless scaling and pay-per-use economics.",
+        "tools": [
+          "AWS Fargate",
+          "Google Cloud Run",
+          "Azure Container Apps",
+          "Knative Serving"
+        ]
+      },
+      {
+        "index": "HP10_7",
+        "name": "Serverless observability (logs, metrics, traces)",
+        "description": "Collect execution metrics, logs, and traces for troubleshooting and optimization.",
+        "tools": [
+          "AWS CloudWatch/X-Ray",
+          "Azure Monitor",
+          "Google Cloud Logging/Trace",
+          "OpenTelemetry"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP10_8",
+        "name": "Ephemeral storage & secrets access",
+        "description": "Provide secure temporary storage and short-lived credentials to functions.",
+        "tools": [
+          "Lambda /tmp",
+          "AWS Secrets Manager",
+          "HashiCorp Vault",
+          "GCP Secret Manager"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP11": {
+    "name": "Service Design (Microservices)",
+    "sub_practices": [
+      {
+        "index": "HP11_1",
+        "name": "Domain-driven decomposition & bounded contexts",
+        "description": "Partition the problem space into cohesive domains with clear ownership and boundaries.",
+        "tools": [
+          "Context Mapper",
+          "EventStorming tools",
+          "DDD frameworks"
+        ]
+      },
+      {
+        "index": "HP11_2",
+        "name": "API contract-first design",
+        "description": "Specify API contracts before implementation to ensure clarity and compatibility.",
+        "tools": [
+          "OpenAPI/Swagger",
+          "gRPC/Protobuf",
+          "GraphQL SDL",
+          "AsyncAPI"
+        ]
+      },
+      {
+        "index": "HP11_3",
+        "name": "API versioning & backward compatibility",
+        "description": "Evolve APIs safely with versioning and automated compatibility checks.",
+        "tools": [
+          "Spectral",
+          "OpenAPI-diff",
+          "Buf",
+          "GraphQL schema checks"
+        ]
+      },
+      {
+        "index": "HP11_4",
+        "name": "Service communication patterns (sync & async)",
+        "description": "Choose appropriate sync (REST/gRPC) and async (events/messages) patterns per interaction.",
+        "tools": [
+          "gRPC",
+          "REST frameworks",
+          "Kafka",
+          "RabbitMQ"
+        ]
+      },
+      {
+        "index": "HP11_5",
+        "name": "Fault tolerance & resilience patterns",
+        "description": "Implement timeouts, retries, bulkheads, and fallbacks for robust inter-service calls.",
+        "tools": [
+          "Resilience4j",
+          "Spring Cloud Circuit Breaker",
+          "Envoy client policies"
+        ]
+      },
+      {
+        "index": "HP11_6",
+        "name": "Distributed transactions & saga orchestration",
+        "description": "Coordinate multi-service workflows with sagas and compensating actions.",
+        "tools": [
+          "Temporal",
+          "Camunda",
+          "Axon Framework",
+          "Spring Cloud Saga"
+        ]
+      },
+      {
+        "index": "HP11_7",
+        "name": "Data ownership & database-per-service",
+        "description": "Ensure each service owns its data model and persistence to avoid tight coupling.",
+        "tools": [
+          "Polyglot DBs",
+          "Debezium (for sync)",
+          "API composition patterns"
+        ]
+      },
+      {
+        "index": "HP11_8",
+        "name": "Service scaffolding & golden paths",
+        "description": "Standardize service creation with templates and opinionated defaults.",
+        "tools": [
+          "Spring Initializr",
+          "Backstage Scaffolder",
+          "Yeoman"
+        ]
+      },
+      {
+        "index": "HP11_9",
+        "name": "Anti-corruption layer for legacy integration",
+        "description": "Isolate legacy systems behind translation layers to protect domain models.",
+        "tools": [
+          "Spring Cloud Gateway",
+          "GraphQL Federation",
+          "Custom adapters"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP12": {
+    "name": "Data Management & Persistence",
+    "sub_practices": [
+      {
+        "index": "HP12_1",
+        "name": "Polyglot persistence selection",
+        "description": "Select data stores matched to access patterns (relational, KV, document, time-series, graph).",
+        "tools": [
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "Cassandra",
+          "DynamoDB",
+          "Redis",
+          "Neo4j"
+        ]
+      },
+      {
+        "index": "HP12_2",
+        "name": "Data partitioning & sharding",
+        "description": "Distribute data via range/hash schemes and rebalance to avoid hotspots.",
+        "tools": [
+          "Cassandra",
+          "MongoDB sharding",
+          "Vitess",
+          "CockroachDB",
+          "YugabyteDB",
+          "Redis Cluster"
+        ]
+      },
+      {
+        "index": "HP12_3",
+        "name": "Replication & read scalability",
+        "description": "Scale reads and increase availability with follower replicas and quorum replication.",
+        "tools": [
+          "PostgreSQL streaming + Patroni",
+          "MySQL Group Replication",
+          "MongoDB replica sets",
+          "CockroachDB",
+          "YugabyteDB"
+        ]
+      },
+      {
+        "index": "HP12_4",
+        "name": "Caching (application, database, edge)",
+        "description": "Reduce latency and load with in-memory caches and edge/CDN caching.",
+        "tools": [
+          "Redis",
+          "Memcached",
+          "Varnish",
+          "CloudFront",
+          "Cloud CDN"
+        ]
+      },
+      {
+        "index": "HP12_5",
+        "name": "Schema migration & compatibility",
+        "description": "Evolve schemas safely with forward/backward compatibility and online migrations.",
+        "tools": [
+          "Flyway",
+          "Liquibase",
+          "gh-ost",
+          "Prisma Migrate"
+        ]
+      },
+      {
+        "index": "HP12_6",
+        "name": "Backup, restore & PITR",
+        "description": "Protect and restore data with scheduled backups, snapshots, and point-in-time recovery.",
+        "tools": [
+          "Velero",
+          "Kasten K10",
+          "pgBackRest",
+          "Percona XtraBackup",
+          "Cloud snapshots (EBS/PD/Azure Disk)"
+        ]
+      },
+      {
+        "index": "HP12_7",
+        "name": "Data encryption (at rest & in transit)",
+        "description": "Encrypt data on disk and over the network with managed keys and TLS.",
+        "tools": [
+          "AWS KMS",
+          "Azure Key Vault",
+          "GCP KMS",
+          "PostgreSQL TDE/pgcrypto",
+          "MySQL TDE",
+          "TLS drivers"
+        ]
+      },
+      {
+        "index": "HP12_8",
+        "name": "Consistency & transaction strategies",
+        "description": "Choose appropriate consistency and transaction boundaries to meet correctness needs.",
+        "tools": [
+          "CockroachDB (serializable)",
+          "DynamoDB (eventual/strong)",
+          "PostgreSQL/MySQL ACID",
+          "Outbox pattern libs"
+        ]
+      },
+      {
+        "index": "HP12_9",
+        "name": "Multi-region data topology",
+        "description": "Place and replicate data across regions for latency and availability.",
+        "tools": [
+          "CockroachDB geo-partitioning",
+          "DynamoDB Global Tables",
+          "MongoDB Global Clusters"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP12_10",
+        "name": "Data governance & lineage",
+        "description": "Track data ownership, retention, and lineage for compliance and quality.",
+        "tools": [
+          "Apache Atlas",
+          "OpenLineage/Marquez",
+          "Amundsen",
+          "dbt docs"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP12_11",
+        "name": "Change Data Capture (CDC)",
+        "description": "Stream database changes for integration and analytics pipelines.",
+        "tools": [
+          "Debezium",
+          "Oracle GoldenGate",
+          "AWS DMS",
+          "StreamSets"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP12_12",
+        "name": "Search indexing & denormalized views",
+        "description": "Create secondary indexes and projections to speed up queries and analytics.",
+        "tools": [
+          "Elasticsearch/OpenSearch",
+          "PostgreSQL materialized views",
+          "ksqlDB/Flink projections"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP13": {
+    "name": "Chaos Engineering",
+    "sub_practices": [
+      {
+        "index": "HP13_1",
+        "name": "Fault injection (CPU, memory, network, process, disk)",
+        "description": "Inject failures to validate resilience and uncover weaknesses under controlled conditions.",
+        "tools": [
+          "Chaos Mesh",
+          "LitmusChaos",
+          "Gremlin",
+          "AWS Fault Injection Simulator",
+          "Toxiproxy"
+        ]
+      },
+      {
+        "index": "HP13_2",
+        "name": "Experiment orchestration & automation",
+        "description": "Define and automate chaos experiments and scenarios for repeatability.",
+        "tools": [
+          "Chaos Mesh workflows",
+          "LitmusChaos experiments",
+          "Gremlin Scenarios",
+          "Azure Chaos Studio"
+        ]
+      },
+      {
+        "index": "HP13_3",
+        "name": "Blast radius control & safeguards",
+        "description": "Limit the scope and impact of experiments with selectors, guards, and safety checks.",
+        "tools": [
+          "Chaos Mesh selectors",
+          "Gremlin safety controls",
+          "LitmusChaos constraints"
+        ]
+      },
+      {
+        "index": "HP13_4",
+        "name": "Post-experiment analysis & resilience regression",
+        "description": "Capture results, derive actions, and prevent regressions via dashboards and reports.",
+        "tools": [
+          "LitmusChaos analytics",
+          "Gremlin reports",
+          "Grafana dashboards",
+          "Chaos Toolkit reporting"
+        ]
+      },
+      {
+        "index": "HP13_5",
+        "name": "GameDays & resilience drills",
+        "description": "Practice team response to failures through scheduled exercises and playbooks.",
+        "tools": [
+          "Gremlin GameDays",
+          "AWS FIS with runbooks",
+          "LitmusChaos manual orchestration"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP14": {
+    "name": "Performance Engineering",
+    "sub_practices": [
+      {
+        "index": "HP14_1",
+        "name": "Load testing",
+        "description": "Validate performance under expected steady-state workloads.",
+        "tools": [
+          "JMeter",
+          "Locust",
+          "Gatling",
+          "k6",
+          "Vegeta"
+        ]
+      },
+      {
+        "index": "HP14_2",
+        "name": "Stress testing (saturation & breakpoints)",
+        "description": "Push the system beyond design limits to discover bottlenecks and failure modes.",
+        "tools": [
+          "JMeter",
+          "Locust",
+          "k6",
+          "Custom chaos load injectors"
+        ]
+      },
+      {
+        "index": "HP14_3",
+        "name": "Soak / endurance testing",
+        "description": "Run long-duration tests to expose leaks, degradation, and GC issues.",
+        "tools": [
+          "Locust (long runs)",
+          "k6 Cloud",
+          "Chaos Mesh + load"
+        ]
+      },
+      {
+        "index": "HP14_4",
+        "name": "Performance profiling & bottleneck analysis",
+        "description": "Profile CPU, memory, I/O, and locks to find hotspots and optimize.",
+        "tools": [
+          "perf",
+          "eBPF/bcc",
+          "Pixie",
+          "FlameGraph",
+          "Java Flight Recorder",
+          "pprof",
+          "PySpy"
+        ]
+      },
+      {
+        "index": "HP14_5",
+        "name": "Performance regression testing in CI/CD",
+        "description": "Compare performance against baselines automatically in pipelines.",
+        "tools": [
+          "k6 + GitHub Actions",
+          "JMeter + Jenkins",
+          "Keptn"
+        ]
+      },
+      {
+        "index": "HP14_6",
+        "name": "Capacity planning & performance budgeting",
+        "description": "Set SLOs and budgets, track headroom, and balance cost vs performance.",
+        "tools": [
+          "Prometheus/Grafana",
+          "CloudWatch",
+          "Datadog APM",
+          "Keptn SLO-as-code"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP15": {
+    "name": "Identity & Access Management",
+    "sub_practices": [
+      {
+        "index": "HP15_1",
+        "name": "Authentication (AuthN)",
+        "description": "Authenticate users and services with federated identity and MFA as needed.",
+        "tools": [
+          "Keycloak",
+          "Dex",
+          "Auth0",
+          "Okta",
+          "AWS Cognito",
+          "Azure AD",
+          "Google IAM"
+        ]
+      },
+      {
+        "index": "HP15_2",
+        "name": "Authorization (AuthZ) & policy enforcement",
+        "description": "Apply fine-grained access controls using role-, attribute-, or relationship-based models.",
+        "tools": [
+          "Kubernetes RBAC",
+          "OPA/Gatekeeper",
+          "AWS IAM policies",
+          "Azure RBAC",
+          "Google IAM conditions"
+        ]
+      },
+      {
+        "index": "HP15_3",
+        "name": "Secrets management",
+        "description": "Store, rotate, and broker secrets and keys securely to workloads and users.",
+        "tools": [
+          "HashiCorp Vault",
+          "AWS Secrets Manager",
+          "Azure Key Vault",
+          "Google Secret Manager",
+          "SOPS",
+          "External Secrets Operator"
+        ]
+      },
+      {
+        "index": "HP15_4",
+        "name": "Workload identity (short-lived certs/tokens, SPIFFE/SPIRE)",
+        "description": "Issue short-lived workload identities for zero-trust authentication across systems.",
+        "tools": [
+          "SPIFFE/SPIRE",
+          "Istio identity",
+          "AWS IRSA",
+          "GCP Workload Identity"
+        ]
+      },
+      {
+        "index": "HP15_5",
+        "name": "Identity federation (SSO, OIDC, SAML, OAuth2)",
+        "description": "Connect identity providers to enable single sign-on across platforms.",
+        "tools": [
+          "Keycloak",
+          "Auth0",
+          "Okta",
+          "Dex",
+          "AWS IAM Identity Center (SSO)",
+          "Azure AD"
+        ]
+      },
+      {
+        "index": "HP15_6",
+        "name": "Credential rotation & lifecycle management",
+        "description": "Automate key and token rotation with strict expiry and revocation processes.",
+        "tools": [
+          "Vault dynamic secrets",
+          "AWS IAM key rotation",
+          "Azure AD PIM",
+          "GCP IAM key rotation"
+        ]
+      },
+      {
+        "index": "HP15_7",
+        "name": "Just-in-time (JIT) & least-privilege access",
+        "description": "Grant ephemeral access with minimal privileges on demand and audit the use.",
+        "tools": [
+          "HashiCorp Vault",
+          "Azure AD PIM",
+          "BeyondCorp"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP15_8",
+        "name": "Audit logging & access visibility",
+        "description": "Record and analyze access decisions and identity events for compliance and forensics.",
+        "tools": [
+          "AWS CloudTrail",
+          "Azure Monitor",
+          "GCP Audit Logs",
+          "Vault audit logs",
+          "OPA decision logs"
+        ]
+      },
+      {
+        "index": "HP15_9",
+        "name": "Passwordless & hardware-backed authentication",
+        "description": "Adopt phishing-resistant authentication with WebAuthn and security keys.",
+        "tools": [
+          "WebAuthn/FIDO2",
+          "YubiKey",
+          "Azure AD Passkeys",
+          "Okta FastPass"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP16": {
+    "name": "Compliance & Governance",
+    "sub_practices": [
+      {
+        "index": "HP16_1",
+        "name": "Policy as Code enforcement",
+        "description": "Codify and enforce security and compliance rules across clusters and clouds.",
+        "tools": [
+          "OPA/Gatekeeper",
+          "Kyverno",
+          "KubeWarden",
+          "Terraform Sentinel"
+        ]
+      },
+      {
+        "index": "HP16_2",
+        "name": "Compliance as Code (standards mapping)",
+        "description": "Map regulatory frameworks to technical controls in machine-readable formats.",
+        "tools": [
+          "OSCAL",
+          "Cloud Custodian",
+          "Regula",
+          "Sentinel"
+        ]
+      },
+      {
+        "index": "HP16_3",
+        "name": "Continuous compliance scanning (IaC + runtime)",
+        "description": "Continuously assess configurations and runtime resources against policies.",
+        "tools": [
+          "Checkov",
+          "Terraform Compliance",
+          "Aqua",
+          "Prisma Cloud",
+          "Wiz",
+          "OpenSCAP"
+        ]
+      },
+      {
+        "index": "HP16_4",
+        "name": "Audit logging & evidence collection",
+        "description": "Collect immutable logs and artifacts to support audits and incident investigations.",
+        "tools": [
+          "AWS CloudTrail",
+          "Azure Monitor",
+          "GCP Audit Logs",
+          "Kubernetes Audit API",
+          "Falco"
+        ]
+      },
+      {
+        "index": "HP16_5",
+        "name": "Governance dashboards & reporting",
+        "description": "Provide organization-wide visibility into compliance posture and remediation status.",
+        "tools": [
+          "AWS Security Hub",
+          "Azure Security Center",
+          "GCP Security Command Center",
+          "Prisma dashboards"
+        ]
+      },
+      {
+        "index": "HP16_6",
+        "name": "Supply chain security & attestations",
+        "description": "Verify artifact integrity and provenance with signatures, SBOMs, and attestations.",
+        "tools": [
+          "Sigstore Cosign",
+          "in-toto",
+          "SLSA",
+          "Tekton Chains"
+        ]
+      },
+      {
+        "index": "HP16_7",
+        "name": "Exception handling & waiver management",
+        "description": "Track, approve, and expire policy exceptions with accountable owners and review.",
+        "tools": [
+          "ServiceNow GRC",
+          "Archer",
+          "Custom PaC workflows"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP17": {
+    "name": "Data Protection & Disaster Recovery",
+    "sub_practices": [
+      {
+        "index": "HP17_1",
+        "name": "Automated backup & restore",
+        "description": "Schedule, verify, and restore backups for applications and persistent volumes.",
+        "tools": [
+          "Velero",
+          "Kasten K10",
+          "TrilioVault",
+          "AWS Backup",
+          "Azure Backup",
+          "GCP Backup"
+        ]
+      },
+      {
+        "index": "HP17_2",
+        "name": "Snapshots & cross-region replication",
+        "description": "Create snapshots and replicate storage across zones/regions for survivability.",
+        "tools": [
+          "AWS EBS snapshots",
+          "GCP PD snapshots",
+          "Azure Disk snapshots",
+          "Portworx PX-DR"
+        ]
+      },
+      {
+        "index": "HP17_3",
+        "name": "Disaster recovery orchestration (failover/failback)",
+        "description": "Automate application, data, and DNS failover/failback between sites.",
+        "tools": [
+          "CloudEndure",
+          "VMware SRM",
+          "Azure Site Recovery",
+          "Portworx PX-DR"
+        ]
+      },
+      {
+        "index": "HP17_4",
+        "name": "RPO/RTO objectives & testing",
+        "description": "Define and regularly validate recovery objectives via drills and reports.",
+        "tools": [
+          "CloudEndure",
+          "SRM",
+          "PX-DR",
+          "Chaos + runbooks"
+        ]
+      },
+      {
+        "index": "HP17_5",
+        "name": "Application-consistent backups",
+        "description": "Quiesce applications/databases to capture consistent recovery points.",
+        "tools": [
+          "Velero hooks",
+          "Kasten application-aware backup",
+          "Oracle RMAN"
+        ]
+      },
+      {
+        "index": "HP17_6",
+        "name": "Backup encryption & immutability (WORM)",
+        "description": "Protect backups from tampering and ransomware with immutable storage and encryption.",
+        "tools": [
+          "AWS Backup Vault Lock",
+          "GCP Object Lock",
+          "Azure Immutable Blob",
+          "Veeam immutability"
+        ]
+      },
+      {
+        "index": "HP17_7",
+        "name": "Continuous data protection (journaling/streaming)",
+        "description": "Achieve near-zero RPO with continuous replication and journaling.",
+        "tools": [
+          "Zerto",
+          "Portworx PX-DR",
+          "Azure Continuous Backup"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP18": {
+    "name": "Multi-Cluster & Multi-Region",
+    "sub_practices": [
+      {
+        "index": "HP18_1",
+        "name": "Multi-cluster service discovery & DNS",
+        "description": "Resolve and route to services across clusters and regions reliably.",
+        "tools": [
+          "Kubernetes MCS API",
+          "CoreDNS federation",
+          "Istio multi-cluster",
+          "Consul WAN"
+        ]
+      },
+      {
+        "index": "HP18_2",
+        "name": "Cross-cluster workload placement & scheduling",
+        "description": "Place workloads across clusters with policies and failover strategies.",
+        "tools": [
+          "Cluster API",
+          "Karmada",
+          "Admiralty",
+          "OpenShift ACM"
+        ]
+      },
+      {
+        "index": "HP18_3",
+        "name": "Federation & policy propagation",
+        "description": "Sync policies, RBAC, and configurations across clusters from a central source of truth.",
+        "tools": [
+          "KubeFed",
+          "Karmada",
+          "Anthos Config Management",
+          "Open Cluster Management (OCM)"
+        ]
+      },
+      {
+        "index": "HP18_4",
+        "name": "Global traffic management & failover",
+        "description": "Steer user traffic to healthy regions and fail over during outages.",
+        "tools": [
+          "AWS Route 53",
+          "GCP Cloud DNS",
+          "Azure Traffic Manager",
+          "Akamai GTM"
+        ]
+      },
+      {
+        "index": "HP18_5",
+        "name": "Identity & trust federation across clusters",
+        "description": "Establish cross-cluster trust and workload identity across trust domains.",
+        "tools": [
+          "SPIFFE trust domains",
+          "Istio multi-cluster identity",
+          "Vault replication"
+        ]
+      },
+      {
+        "index": "HP18_6",
+        "name": "Data replication & consistency across regions",
+        "description": "Replicate and partition data for geo-resilience and locality-aware access.",
+        "tools": [
+          "CockroachDB",
+          "YugabyteDB",
+          "Cassandra",
+          "Vitess",
+          "Portworx PX-DR"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP18_7",
+        "name": "Multi-mesh expansion",
+        "description": "Extend or federate service meshes across clusters for unified policy and telemetry.",
+        "tools": [
+          "Istio multi-mesh",
+          "Linkerd multicluster",
+          "Consul WAN"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP19": {
+    "name": "Platform Engineering (Internal Developer Platforms)",
+    "sub_practices": [
+      {
+        "index": "HP19_1",
+        "name": "Self-service portals & UIs",
+        "description": "Provide a unified front door for developers to request environments and capabilities without tickets.",
+        "tools": [
+          "Backstage",
+          "Port",
+          "Humanitec",
+          "Cortex"
+        ]
+      },
+      {
+        "index": "HP19_2",
+        "name": "Golden paths & service templates",
+        "description": "Standardize scaffolding for services, pipelines, and infrastructure with paved roads.",
+        "tools": [
+          "Backstage Scaffolder",
+          "Cookiecutter",
+          "Yeoman",
+          "Spring Initializr"
+        ]
+      },
+      {
+        "index": "HP19_3",
+        "name": "On-demand environment provisioning",
+        "description": "Provision ephemeral and staged environments automatically via APIs and GitOps.",
+        "tools": [
+          "Crossplane",
+          "Terraform + GitOps",
+          "Humanitec",
+          "Garden"
+        ]
+      },
+      {
+        "index": "HP19_4",
+        "name": "Service catalogs & discoverability",
+        "description": "Catalog services, ownership, APIs, and dependencies to improve visibility and reuse.",
+        "tools": [
+          "Backstage Catalog",
+          "AWS Service Catalog",
+          "Port",
+          "Cortex"
+        ]
+      },
+      {
+        "index": "HP19_5",
+        "name": "Guardrails & governance baked-in",
+        "description": "Bake security, compliance, and policy defaults into platform workflows.",
+        "tools": [
+          "OPA",
+          "Kyverno",
+          "Terraform Sentinel",
+          "Humanitec guardrails"
+        ]
+      },
+      {
+        "index": "HP19_6",
+        "name": "Unified CI/CD & workflow orchestration",
+        "description": "Integrate build, deploy, and approvals into cohesive developer workflows.",
+        "tools": [
+          "Argo CD",
+          "Tekton",
+          "GitHub Actions",
+          "GitLab CI"
+        ]
+      },
+      {
+        "index": "HP19_7",
+        "name": "IDP integration frameworks",
+        "description": "Use platform backbones that integrate tools, catalogs, and workflows cohesively.",
+        "tools": [
+          "Backstage",
+          "Humanitec",
+          "Port",
+          "Cortex",
+          "Rafay"
+        ]
+      },
+      {
+        "index": "HP19_8",
+        "name": "Developer observability & feedback loops",
+        "description": "Expose runtime KPIs, SLOs, and logs to developers from within the platform.",
+        "tools": [
+          "Grafana",
+          "Datadog",
+          "New Relic",
+          "Backstage plugins"
+        ],
+        "optional": true
+      }
+    ]
+  },
+  "HP20": {
+    "name": "Cost Management & FinOps",
+    "sub_practices": [
+      {
+        "index": "HP20_1",
+        "name": "Cost visibility & monitoring",
+        "description": "Track spend and usage across accounts, clusters, and services with timely attribution.",
+        "tools": [
+          "AWS Cost Explorer",
+          "GCP Billing",
+          "Azure Cost Management",
+          "Kubecost",
+          "CloudHealth"
+        ]
+      },
+      {
+        "index": "HP20_2",
+        "name": "Cost allocation & chargeback/showback",
+        "description": "Allocate costs to owners via tags/labels and report showback or enforce chargeback.",
+        "tools": [
+          "AWS Cost Allocation Tags",
+          "Kubecost",
+          "Apptio Cloudability",
+          "CloudHealth"
+        ]
+      },
+      {
+        "index": "HP20_3",
+        "name": "Rightsizing & resource optimization",
+        "description": "Detect idle/over-provisioned resources and apply sizing recommendations.",
+        "tools": [
+          "AWS Compute Optimizer",
+          "GCP Recommender",
+          "Azure Advisor",
+          "Kubecost"
+        ]
+      },
+      {
+        "index": "HP20_4",
+        "name": "Reserved capacity & savings plans",
+        "description": "Reduce costs with committed-use discounts like reservations and savings plans.",
+        "tools": [
+          "AWS Savings Plans/Reserved Instances",
+          "Azure Reservations",
+          "GCP Committed Use Discounts"
+        ]
+      },
+      {
+        "index": "HP20_5",
+        "name": "Budget enforcement & anomaly detection",
+        "description": "Set budgets and alert on unusual spend spikes or anomalies.",
+        "tools": [
+          "AWS Budgets",
+          "GCP Budget Alerts",
+          "Azure Cost Alerts",
+          "Anodot"
+        ]
+      },
+      {
+        "index": "HP20_6",
+        "name": "Multi-cloud cost aggregation",
+        "description": "Normalize and compare costs across providers and clusters in one pane.",
+        "tools": [
+          "CloudHealth",
+          "Apptio Cloudability",
+          "Kubecost (multi-cluster)"
+        ],
+        "optional": true
+      },
+      {
+        "index": "HP20_7",
+        "name": "Business value metrics (unit economics)",
+        "description": "Relate spend to business value with metrics like cost per user or per transaction.",
+        "tools": [
+          "Kubecost Business Metrics",
+          "FinOps dashboards",
+          "Apptio Cloudability"
+        ],
+        "optional": true
+      }
+    ]
+  }
+}
