@@ -5,61 +5,61 @@
       "Multi-stage & reproducible builds": {
         "index": "HP1_1",
         "QAs": {
-          "Maintainability": "Deterministic builds simplify debugging and updates.",
-          "Efficiency": "Smaller images reduce build/pull time and storage.",
-          "Security": "Fewer layers/deps lower exposure to vulnerabilities."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Efficiency": "produces lean images and avoids redundant build work.",
+          "Security": "isolates build stages so only runtime code ships, reducing exposure."
         }
       },
       "Minimal/distroless base images": {
         "index": "HP1_2",
         "QAs": {
-          "Security": "Removes shells/tools to cut attack surface.",
-          "Performance": "Lighter images speed startup and IO.",
-          "Efficiency": "Less data transferred and stored."
+          "Security": "removes shells and unused packages to shrink the attack surface.",
+          "Performance": "shrinks image size to speed startup and cold\u2011starts.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "SBOM generation": {
         "index": "HP1_3",
         "QAs": {
-          "Security": "Enables precise vuln matching to components.",
-          "Maintainability": "Clarifies dependencies for safe upgrades.",
-          "Observability": "Gives inventory visibility for audits."
+          "Security": "exposes a full component inventory for precise CVE matching.",
+          "Maintainability": "clarifies dependencies to plan safe upgrades.",
+          "Observability": "exposes signals needed for detection and diagnosis."
         }
       },
       "Vulnerability scanning": {
         "index": "HP1_4",
         "QAs": {
-          "Security": "Blocks known-CVE images from progressing.",
-          "Reliability": "Prevents exploit-driven outages."
+          "Security": "detects known CVEs and misconfigurations before release.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Policy gates / admission enforcement": {
         "index": "HP1_5",
         "QAs": {
-          "Security": "Enforces org rules before deploy.",
-          "Reliability": "Stops risky artifacts from entering prod."
+          "Security": "blocks non\u2011compliant artifacts via policy enforcement.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Image signing & verification": {
         "index": "HP1_6",
         "QAs": {
-          "Security": "Ensures image integrity and provenance.",
-          "Reliability": "Prevents running tampered images."
+          "Security": "verifies artifact integrity and provenance at deploy time.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Provenance attestations": {
         "index": "HP1_7",
         "QAs": {
-          "Security": "Cryptographically proves build process and inputs.",
-          "Maintainability": "Traceability supports incident response."
+          "Security": "adds tamper\u2011evident build metadata for supply\u2011chain trust.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Container registry & distribution": {
         "index": "HP1_8",
         "QAs": {
-          "Scalability": "Serves images to many regions/consumers.",
-          "Reliability": "Geo-replication and HA improve availability.",
-          "Portability": "OCI registries work across runtimes/clouds."
+          "Scalability": "replicates and caches images globally to serve large fleets.",
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Portability": "keeps definitions portable across environments to avoid lock\u2011in."
         }
       }
     }
@@ -70,45 +70,45 @@
       "Runtime classes": {
         "index": "HP2_1",
         "QAs": {
-          "Security": "Sandboxed/VM runtimes isolate untrusted code.",
-          "Performance": "Choose runtimes optimized for throughput/latency.",
-          "Efficiency": "Match runtime to workload to avoid overhead."
+          "Security": "tightens controls and reduces exposure to threats.",
+          "Performance": "reduces latency and runtime overhead.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Rootless/least-privilege runtime": {
         "index": "HP2_2",
         "QAs": {
-          "Security": "Drops root to restrict kernel attack paths.",
-          "Resilience": "Compromise impact is contained."
+          "Security": "drops root privileges to limit container breakout impact.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "CNI networking configuration": {
         "index": "HP2_3",
         "QAs": {
-          "Reliability": "Stable pod connectivity and routing.",
-          "Performance": "Low-overhead datapaths reduce latency.",
-          "Security": "Baseline isolation via network policies."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Performance": "reduces latency and runtime overhead.",
+          "Security": "tightens controls and reduces exposure to threats."
         }
       },
       "Security profiles & sandboxing": {
         "index": "HP2_4",
         "QAs": {
-          "Security": "Seccomp/AppArmor/SELinux restrict syscalls and domains.",
-          "Reliability": "Faulty code contained from impacting node."
+          "Security": "sandboxes workloads and restricts syscalls.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Secrets/config at runtime": {
         "index": "HP2_5",
         "QAs": {
-          "Security": "Externalized secrets with least exposure.",
-          "Maintainability": "Rotate config without rebuilding images."
+          "Security": "protects secrets and keys with managed storage and rotation.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Device plugins & accelerators": {
         "index": "HP2_6",
         "QAs": {
-          "Performance": "GPU/FPGA offload improves throughput/latency.",
-          "Scalability": "Scales specialized workloads horizontally."
+          "Performance": "reduces latency and runtime overhead.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       }
     }
@@ -119,66 +119,66 @@
       "Scheduling & placement policies": {
         "index": "HP3_1",
         "QAs": {
-          "Efficiency": "Bin-packing and affinities reduce waste.",
-          "Reliability": "Topology spread avoids single-node risk.",
-          "Performance": "NUMA/zone-aware placement reduces contention."
+          "Efficiency": "cuts waste and improves resource utilization.",
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Resource management": {
         "index": "HP3_2",
         "QAs": {
-          "Reliability": "Requests/limits prevent OOM and thrash.",
-          "Scalability": "Quotas protect clusters from noisy neighbors."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       },
       "Autoscaling": {
         "index": "HP3_3",
         "QAs": {
-          "Scalability": "Adds capacity with demand automatically.",
-          "Efficiency": "Scales to zero/off-peak to cut waste.",
-          "Performance": "Meets latency/throughput targets under load."
+          "Scalability": "enables safe horizontal and vertical scaling.",
+          "Efficiency": "cuts waste and improves resource utilization.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Service networking & L4 load balancing": {
         "index": "HP3_4",
         "QAs": {
-          "Reliability": "Stable VIPs and failover across pods.",
-          "Performance": "Even distribution reduces tail latency."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Network policy enforcement": {
         "index": "HP3_5",
         "QAs": {
-          "Security": "Blocks unauthorized east\u2013west traffic.",
-          "Resilience": "Limits blast radius of compromised pods."
+          "Security": "blocks non\u2011compliant artifacts via policy enforcement.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Workload patterns & replication": {
         "index": "HP3_6",
         "QAs": {
-          "Reliability": "Replicas and controllers recover instances.",
-          "Maintainability": "Right controller simplifies ops per pattern."
+          "Reliability": "provides recovery paths to sustain service during failures.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Rollouts & rollbacks (progressive delivery)": {
         "index": "HP3_7",
         "QAs": {
-          "Reliability": "Limits impact of bad releases.",
-          "Resilience": "Fast rollback reduces downtime."
+          "Reliability": "limits blast radius with progressive delivery.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Health management & self-healing": {
         "index": "HP3_8",
         "QAs": {
-          "Reliability": "Probes detect failures early.",
-          "Resilience": "Automatic restarts replace bad pods."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Storage orchestration": {
         "index": "HP3_9",
         "QAs": {
-          "Reliability": "Dynamic PVs attach reliably across nodes.",
-          "Portability": "CSI abstracts vendors/clouds."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Portability": "keeps implementations consistent across environments."
         }
       }
     }
@@ -189,58 +189,58 @@
       "Service registry & discovery": {
         "index": "HP4_1",
         "QAs": {
-          "Reliability": "Resolves healthy endpoints to reduce errors.",
-          "Performance": "Locality-aware routing lowers latency.",
-          "Scalability": "Handles frequent endpoint churn."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Performance": "reduces latency and runtime overhead.",
+          "Scalability": "replicates and caches images globally to serve large fleets."
         }
       },
       "mTLS authentication": {
         "index": "HP4_2",
         "QAs": {
-          "Security": "Encrypts/authenticates all service calls.",
-          "Reliability": "Prevents MITM that cause failures."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Automatic certificate rotation": {
         "index": "HP4_3",
         "QAs": {
-          "Security": "Short-lived certs reduce credential risk.",
-          "Maintainability": "Automates renewal to avoid outages."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Request routing & L7 load balancing": {
         "index": "HP4_4",
         "QAs": {
-          "Performance": "Header/path routing optimizes backend use.",
-          "Reliability": "Traffic shifting avoids hot spots."
+          "Performance": "optimizes request routing and connection reuse to cut overhead.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Retries & timeouts": {
         "index": "HP4_5",
         "QAs": {
-          "Reliability": "Bounds latency during partial failures.",
-          "Resilience": "Retries alternate healthy endpoints."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Resilience": "isolates faults and degrades gracefully under stress."
         }
       },
       "Circuit breaking & outlier detection": {
         "index": "HP4_6",
         "QAs": {
-          "Resilience": "Ejects bad instances to prevent cascades.",
-          "Reliability": "Protects callers from overload."
+          "Resilience": "isolates faults and degrades gracefully under stress.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Service-to-service authorization policies": {
         "index": "HP4_7",
         "QAs": {
-          "Security": "Least-privilege service access controls.",
-          "Reliability": "Blocks unintended/unsafe calls."
+          "Security": "applies least\u2011privilege authorization across services.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Mesh-native telemetry": {
         "index": "HP4_8",
         "QAs": {
-          "Observability": "Uniform metrics/traces without code changes.",
-          "Maintainability": "Faster triage of service issues."
+          "Observability": "exposes signals needed for detection and diagnosis.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       }
     }
@@ -251,43 +251,43 @@
       "TLS termination & SNI/mTLS at edge": {
         "index": "HP5_1",
         "QAs": {
-          "Security": "Encrypts client-to-edge traffic and can enforce mTLS.",
-          "Performance": "Offload frees backend CPU for business logic."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Dynamic request routing": {
         "index": "HP5_2",
         "QAs": {
-          "Reliability": "Routes around failures to healthy backends.",
-          "Performance": "Header/URL routing optimizes paths."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Performance": "optimizes request routing and connection reuse to cut overhead."
         }
       },
       "Request validation": {
         "index": "HP5_3",
         "QAs": {
-          "Security": "Blocks malformed or oversized requests early.",
-          "Reliability": "Prevents bad inputs from crashing services."
+          "Security": "tightens controls and reduces exposure to threats.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Authentication & authorization at edge": {
         "index": "HP5_4",
         "QAs": {
-          "Security": "Centralizes OIDC/JWT/API-key enforcement.",
-          "Maintainability": "Removes duplicated auth logic from services."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Rate limiting & quotas": {
         "index": "HP5_5",
         "QAs": {
-          "Resilience": "Shields backends from overload.",
-          "Reliability": "Prevents resource starvation by abusive clients."
+          "Resilience": "contains faults and supports controlled recovery.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Request/response transformation & protocol bridging": {
         "index": "HP5_6",
         "QAs": {
-          "Portability": "Decouples clients from backend protocol changes.",
-          "Maintainability": "Centralizes translations to avoid code churn."
+          "Portability": "keeps implementations consistent across environments.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       }
     }
@@ -298,44 +298,44 @@
       "Declarative resource definition (IaC engines)": {
         "index": "HP6_1",
         "QAs": {
-          "Maintainability": "Readable, reviewable infra definitions.",
-          "Reliability": "Idempotent applies reduce drift-induced bugs.",
-          "Portability": "Abstracts providers for consistent patterns."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Portability": "keeps definitions portable across environments to avoid lock\u2011in."
         }
       },
       "Module reuse & environment composition": {
         "index": "HP6_2",
         "QAs": {
-          "Maintainability": "Shared modules cut duplication.",
-          "Reliability": "Consistent env patterns reduce misconfig."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "State management & drift remediation": {
         "index": "HP6_3",
         "QAs": {
-          "Reliability": "Detects and corrects config drift.",
-          "Security": "Protects state with locking and ACLs."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Security": "tightens controls and reduces exposure to threats."
         }
       },
       "Policy as Code enforcement in IaC workflows": {
         "index": "HP6_4",
         "QAs": {
-          "Security": "Blocks non-compliant plans at review time.",
-          "Reliability": "Prevents risky changes from applying."
+          "Security": "blocks non\u2011compliant artifacts via policy enforcement.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "IaC security scanning": {
         "index": "HP6_5",
         "QAs": {
-          "Security": "Finds misconfigurations before deploy.",
-          "Maintainability": "Standardizes best practices in code."
+          "Security": "detects known CVEs and misconfigurations before release.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "IaC testing": {
         "index": "HP6_6",
         "QAs": {
-          "Reliability": "Validates infra behavior via tests.",
-          "Maintainability": "Catches regressions early."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       }
     }
@@ -346,51 +346,51 @@
       "Pipeline as Code": {
         "index": "HP7_1",
         "QAs": {
-          "Maintainability": "Pipelines are versioned and reviewable.",
-          "Reliability": "Deterministic workflows reduce flakiness."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Automated build & test execution": {
         "index": "HP7_2",
         "QAs": {
-          "Reliability": "Early defect detection prevents bad deploys.",
-          "Efficiency": "Automation removes manual toil."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Security & quality scanning in CI/CD": {
         "index": "HP7_3",
         "QAs": {
-          "Security": "Continuous SAST/DAST/deps checks gate releases.",
-          "Reliability": "Fewer defects reach production."
+          "Security": "detects known CVEs and misconfigurations before release.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Progressive delivery (canary, blue-green, feature flags)": {
         "index": "HP7_4",
         "QAs": {
-          "Reliability": "Gradual rollout reduces incident scope.",
-          "Resilience": "Fast rollback on health signals."
+          "Reliability": "limits blast radius with progressive delivery.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "GitOps-driven continuous delivery": {
         "index": "HP7_5",
         "QAs": {
-          "Maintainability": "Single source of truth in Git.",
-          "Reliability": "Controllers reconcile drift automatically.",
-          "Security": "Commit history provides auditable changes."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Security": "tightens controls and reduces exposure to threats."
         }
       },
       "Automated rollback & roll-forward": {
         "index": "HP7_6",
         "QAs": {
-          "Reliability": "Quick recovery from bad versions.",
-          "Resilience": "Minimizes downtime during incidents."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Pipeline observability & governance": {
         "index": "HP7_7",
         "QAs": {
-          "Observability": "Traceability of builds, deploys, and approvals.",
-          "Security": "Attestations and policies enforce release hygiene."
+          "Observability": "exposes signals needed for detection and diagnosis.",
+          "Security": "tightens controls and reduces exposure to threats."
         }
       }
     }
@@ -401,49 +401,49 @@
       "Metrics collection & aggregation": {
         "index": "HP8_1",
         "QAs": {
-          "Observability": "Exposes golden signals for services.",
-          "Reliability": "Detects degradations before outages."
+          "Observability": "emits actionable metrics for alerting and SLOs.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Centralized log aggregation": {
         "index": "HP8_2",
         "QAs": {
-          "Observability": "Correlates events across services.",
-          "Maintainability": "Speeds root-cause analysis."
+          "Observability": "centralizes logs for debugging and forensics.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Distributed tracing": {
         "index": "HP8_3",
         "QAs": {
-          "Observability": "End-to-end request path visibility.",
-          "Performance": "Identifies latency hotspots."
+          "Observability": "exposes signals needed for detection and diagnosis.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Dashboards & visualization": {
         "index": "HP8_4",
         "QAs": {
-          "Observability": "Shared views of health and SLOs."
+          "Observability": "exposes signals needed for detection and diagnosis."
         }
       },
       "Alerting & incident notification": {
         "index": "HP8_5",
         "QAs": {
-          "Reliability": "Fast detection and response.",
-          "Resilience": "Reduces MTTR during failures."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Synthetic & blackbox monitoring": {
         "index": "HP8_6",
         "QAs": {
-          "Reliability": "Detects user-facing issues proactively.",
-          "Performance": "Tracks external latency/availability."
+          "Reliability": "makes behavior predictable and reduces failure modes.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Anomaly detection (AI/ML-based monitoring)": {
         "index": "HP8_7",
         "QAs": {
-          "Observability": "Highlights unusual patterns automatically.",
-          "Efficiency": "Reduces alert noise for responders."
+          "Observability": "exposes signals needed for detection and diagnosis.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       }
     }
@@ -454,43 +454,43 @@
       "Message brokering & pub-sub": {
         "index": "HP9_1",
         "QAs": {
-          "Scalability": "Decouples producers/consumers for parallelism.",
-          "Reliability": "Buffered delivery tolerates spikes/outages."
+          "Scalability": "decouples producers and consumers to scale independently.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Queueing & consumer groups": {
         "index": "HP9_2",
         "QAs": {
-          "Scalability": "Horizontal consumers increase throughput.",
-          "Efficiency": "Work-distribution prevents idle capacity."
+          "Scalability": "decouples producers and consumers to scale independently.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Delivery semantics (A/L/E-once)": {
         "index": "HP9_3",
         "QAs": {
-          "Reliability": "Predictable processing guarantees.",
-          "Resilience": "Recovery via replay/transactions."
+          "Reliability": "prevents duplicates and loss with defined delivery guarantees.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Schema management & evolution": {
         "index": "HP9_4",
         "QAs": {
-          "Maintainability": "Compatibility checks prevent breaks.",
-          "Portability": "Polyglot clients share stable contracts."
+          "Maintainability": "stabilizes interfaces and evolution paths.",
+          "Portability": "keeps implementations consistent across environments."
         }
       },
       "Dead-letter queues & retry handling": {
         "index": "HP9_5",
         "QAs": {
-          "Resilience": "Quarantines failures for reprocessing.",
-          "Maintainability": "Aids diagnosis of bad messages."
+          "Resilience": "isolates faults and degrades gracefully under stress.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Stream processing & stateful transformations": {
         "index": "HP9_6",
         "QAs": {
-          "Performance": "Low-latency processing on the fly.",
-          "Scalability": "Distributed operators handle high volume."
+          "Performance": "processes data in\u2011flight to minimize end\u2011to\u2011end latency.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       }
     }
@@ -501,43 +501,43 @@
       "Function packaging & deployment": {
         "index": "HP10_1",
         "QAs": {
-          "Maintainability": "Small deploy units reduce change scope.",
-          "Portability": "Common models across clouds/runtimes."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Portability": "keeps implementations consistent across environments."
         }
       },
       "Event triggers & bindings": {
         "index": "HP10_2",
         "QAs": {
-          "Scalability": "Auto-fanout with event sources.",
-          "Reliability": "Native retries improve delivery."
+          "Scalability": "enables safe horizontal and vertical scaling.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Concurrency control & autoscaling policies": {
         "index": "HP10_3",
         "QAs": {
-          "Scalability": "Parallelism matches workload demand.",
-          "Performance": "Throttle to meet latency targets."
+          "Scalability": "enables safe horizontal and vertical scaling.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Cold-start optimization": {
         "index": "HP10_4",
         "QAs": {
-          "Performance": "Cuts first-invocation latency.",
-          "Reliability": "Avoids timeouts from cold starts."
+          "Performance": "reduces latency and runtime overhead.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Function versioning & traffic splitting": {
         "index": "HP10_5",
         "QAs": {
-          "Reliability": "Gradual rollout controls risk.",
-          "Resilience": "Quick rollback on issues."
+          "Reliability": "avoids breaking consumers through backward\u2011compatible interfaces.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Serverless containers (CaaS)": {
         "index": "HP10_6",
         "QAs": {
-          "Scalability": "Elastic scale without node mgmt.",
-          "Efficiency": "Pay-per-use reduces waste."
+          "Scalability": "scales to zero and up automatically with demand.",
+          "Efficiency": "rightsizes capacity to demand to reduce waste."
         }
       }
     }
@@ -548,57 +548,57 @@
       "Domain-driven decomposition & bounded contexts": {
         "index": "HP11_1",
         "QAs": {
-          "Maintainability": "Clear ownership limits ripple effects.",
-          "Reliability": "Fewer shared hotspots reduce failures."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "API contract-first design": {
         "index": "HP11_2",
         "QAs": {
-          "Maintainability": "Contracts guide consistent evolution.",
-          "Portability": "Stable interfaces across clients."
+          "Maintainability": "stabilizes interfaces and evolution paths.",
+          "Portability": "keeps implementations consistent across environments."
         }
       },
       "API versioning & backward compatibility": {
         "index": "HP11_3",
         "QAs": {
-          "Maintainability": "Non-breaking changes ease upgrades.",
-          "Reliability": "Old clients keep working."
+          "Maintainability": "stabilizes interfaces and evolution paths.",
+          "Reliability": "avoids breaking consumers through backward\u2011compatible interfaces."
         }
       },
       "Service communication patterns (sync: REST/gRPC, async: messaging/eventing)": {
         "index": "HP11_4",
         "QAs": {
-          "Performance": "Right protocol reduces overhead.",
-          "Scalability": "Async patterns decouple throughput."
+          "Performance": "reduces latency and runtime overhead.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       },
       "Fault tolerance & resilience patterns": {
         "index": "HP11_5",
         "QAs": {
-          "Resilience": "Bulkheads/fallbacks isolate failures.",
-          "Reliability": "Retries/timeouts avoid cascades."
+          "Resilience": "contains faults and supports controlled recovery.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Distributed transactions & saga orchestration": {
         "index": "HP11_6",
         "QAs": {
-          "Reliability": "Maintains consistency across services.",
-          "Maintainability": "Compensation isolates side effects."
+          "Reliability": "coordinates cross\u2011service consistency despite partial failures.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Data ownership & database-per-service": {
         "index": "HP11_7",
         "QAs": {
-          "Scalability": "Independently scale data per service.",
-          "Maintainability": "Schema changes isolated to owners."
+          "Scalability": "enables safe horizontal and vertical scaling.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Service scaffolding & golden paths": {
         "index": "HP11_8",
         "QAs": {
-          "Maintainability": "Standard templates reduce defects.",
-          "Efficiency": "Faster service bootstrapping."
+          "Maintainability": "standardizes project structure for easier changes.",
+          "Efficiency": "reuses standards and components to minimize toil."
         }
       }
     }
@@ -609,56 +609,56 @@
       "Polyglot persistence selection": {
         "index": "HP12_1",
         "QAs": {
-          "Performance": "Fit store to workload for optimal IO.",
-          "Maintainability": "Avoids forced one-size compromises."
+          "Performance": "reduces latency and runtime overhead.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Data partitioning & sharding": {
         "index": "HP12_2",
         "QAs": {
-          "Scalability": "Distributes load across shards.",
-          "Performance": "Reduces hot-partition contention."
+          "Scalability": "decouples producers and consumers to scale independently.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Replication & read scalability": {
         "index": "HP12_3",
         "QAs": {
-          "Reliability": "Survives node failures with replicas.",
-          "Scalability": "Follower reads expand throughput."
+          "Reliability": "provides recovery paths to sustain service during failures.",
+          "Scalability": "distributes work and data across nodes and regions."
         }
       },
       "Caching (application, database, edge)": {
         "index": "HP12_4",
         "QAs": {
-          "Performance": "Lower latency by serving from memory.",
-          "Efficiency": "Offloads databases to cut cost."
+          "Performance": "reduces latency and runtime overhead.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Schema migration & compatibility": {
         "index": "HP12_5",
         "QAs": {
-          "Maintainability": "Safer, incremental schema evolution.",
-          "Reliability": "Prevents breaking running apps."
+          "Maintainability": "stabilizes interfaces and evolution paths.",
+          "Reliability": "avoids breaking consumers through backward\u2011compatible interfaces."
         }
       },
       "Backup, restore & PITR": {
         "index": "HP12_6",
         "QAs": {
-          "Resilience": "Recover from data loss or corruption.",
-          "Reliability": "Point-in-time restores reduce impact."
+          "Resilience": "ensures recovery from disasters and regional outages.",
+          "Reliability": "provides recovery paths to sustain service during failures."
         }
       },
       "Data encryption (at rest & in transit)": {
         "index": "HP12_7",
         "QAs": {
-          "Security": "Protects sensitive data against theft."
+          "Security": "tightens controls and reduces exposure to threats."
         }
       },
       "Consistency & transaction strategies": {
         "index": "HP12_8",
         "QAs": {
-          "Reliability": "Predictable correctness under concurrency.",
-          "Performance": "Tuned isolation for workload needs."
+          "Reliability": "coordinates cross\u2011service consistency despite partial failures.",
+          "Performance": "reduces latency and runtime overhead."
         }
       }
     }
@@ -669,29 +669,29 @@
       "Fault injection (CPU, memory, network, process, disk)": {
         "index": "HP13_1",
         "QAs": {
-          "Resilience": "Reveals weak spots before real failures.",
-          "Reliability": "Validates recovery behaviors."
+          "Resilience": "validates failure handling under controlled experiments.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Experiment orchestration & automation": {
         "index": "HP13_2",
         "QAs": {
-          "Maintainability": "Reusable experiments reduce toil.",
-          "Reliability": "Consistent execution validates SLOs."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Blast radius control & safeguards": {
         "index": "HP13_3",
         "QAs": {
-          "Security": "Prevents unintended destructive impact.",
-          "Resilience": "Keeps experiments within safe bounds."
+          "Security": "tightens controls and reduces exposure to threats.",
+          "Resilience": "contains faults and supports controlled recovery."
         }
       },
       "Post-experiment analysis & resilience regression": {
         "index": "HP13_4",
         "QAs": {
-          "Observability": "Structured results inform fixes.",
-          "Maintainability": "Prevents repeat regressions."
+          "Observability": "exposes signals needed for detection and diagnosis.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       }
     }
@@ -702,35 +702,35 @@
       "Load testing": {
         "index": "HP14_1",
         "QAs": {
-          "Performance": "Measures latency/throughput at target load.",
-          "Scalability": "Validates capacity vs. demand."
+          "Performance": "reduces latency and runtime overhead.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       },
       "Stress testing (saturation & breakpoints)": {
         "index": "HP14_2",
         "QAs": {
-          "Resilience": "Identifies failure thresholds.",
-          "Performance": "Finds bottlenecks under extreme load."
+          "Resilience": "contains faults and supports controlled recovery.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Soak / endurance testing": {
         "index": "HP14_3",
         "QAs": {
-          "Reliability": "Catches leaks and degradation over time."
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Performance profiling & bottleneck analysis": {
         "index": "HP14_4",
         "QAs": {
-          "Performance": "Locates hotspots to optimize.",
-          "Efficiency": "Guides targeted resource reductions."
+          "Performance": "reduces latency and runtime overhead.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Performance regression testing in CI/CD": {
         "index": "HP14_5",
         "QAs": {
-          "Performance": "Prevents unnoticed slowdowns.",
-          "Maintainability": "Automated checks guard baselines."
+          "Performance": "reduces latency and runtime overhead.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       }
     }
@@ -741,49 +741,49 @@
       "Authentication (AuthN)": {
         "index": "HP15_1",
         "QAs": {
-          "Security": "Verifies user/workload identity.",
-          "Reliability": "Reduces auth-related failures."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Authorization (AuthZ) & policy enforcement": {
         "index": "HP15_2",
         "QAs": {
-          "Security": "Ensures least-privilege access.",
-          "Maintainability": "Central policies simplify changes."
+          "Security": "blocks non\u2011compliant artifacts via policy enforcement.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Secrets management": {
         "index": "HP15_3",
         "QAs": {
-          "Security": "Protects credentials and keys.",
-          "Reliability": "Rotation reduces outage from leaked creds."
+          "Security": "protects secrets and keys with managed storage and rotation.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Workload identity (short-lived certs/tokens, SPIFFE/SPIRE)": {
         "index": "HP15_4",
         "QAs": {
-          "Security": "Strong, short-lived identities for services.",
-          "Portability": "Unified identity across clusters/clouds."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Portability": "keeps implementations consistent across environments."
         }
       },
       "Identity federation (SSO, OIDC, SAML, OAuth2)": {
         "index": "HP15_5",
         "QAs": {
-          "Portability": "Access across ecosystems via standards.",
-          "Maintainability": "Centralizes identity lifecycle."
+          "Portability": "keeps implementations consistent across environments.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Credential rotation & lifecycle management": {
         "index": "HP15_6",
         "QAs": {
-          "Security": "Limits window of credential abuse."
+          "Security": "tightens controls and reduces exposure to threats."
         }
       },
       "Audit logging & access visibility": {
         "index": "HP15_8",
         "QAs": {
-          "Observability": "Trace of who did what, when.",
-          "Security": "Supports detection and forensics."
+          "Observability": "centralizes logs for debugging and forensics.",
+          "Security": "records security\u2011relevant events for investigations."
         }
       }
     }
@@ -794,42 +794,42 @@
       "Policy as Code enforcement": {
         "index": "HP16_1",
         "QAs": {
-          "Security": "Guards against non-compliant changes.",
-          "Reliability": "Prevents risky configs reaching prod."
+          "Security": "blocks non\u2011compliant artifacts via policy enforcement.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Compliance as Code (standards mapping)": {
         "index": "HP16_2",
         "QAs": {
-          "Maintainability": "Codified controls ease updates.",
-          "Observability": "Clear compliance posture visibility."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Observability": "exposes signals needed for detection and diagnosis."
         }
       },
       "Continuous compliance scanning (IaC + runtime)": {
         "index": "HP16_3",
         "QAs": {
-          "Security": "Detects violations continuously.",
-          "Reliability": "Reduces drift-induced incidents."
+          "Security": "detects known CVEs and misconfigurations before release.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Audit logging & evidence collection": {
         "index": "HP16_4",
         "QAs": {
-          "Observability": "Artifacts for audits and RCA.",
-          "Security": "Tamper-evident trail of actions."
+          "Observability": "centralizes logs for debugging and forensics.",
+          "Security": "records security\u2011relevant events for investigations."
         }
       },
       "Governance dashboards & reporting": {
         "index": "HP16_5",
         "QAs": {
-          "Observability": "Org-wide status and trends."
+          "Observability": "exposes signals needed for detection and diagnosis."
         }
       },
       "Supply chain security & attestations": {
         "index": "HP16_6",
         "QAs": {
-          "Security": "Verifies artifact integrity/provenance.",
-          "Reliability": "Prevents untrusted code from release."
+          "Security": "adds tamper\u2011evident build metadata for supply\u2011chain trust.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       }
     }
@@ -840,40 +840,40 @@
       "Automated backup & restore": {
         "index": "HP17_1",
         "QAs": {
-          "Resilience": "Enables recovery from loss/corruption.",
-          "Reliability": "Regular tests ensure restorability."
+          "Resilience": "ensures recovery from disasters and regional outages.",
+          "Reliability": "provides recovery paths to sustain service during failures."
         }
       },
       "Snapshots & cross-region replication": {
         "index": "HP17_2",
         "QAs": {
-          "Resilience": "Survives AZ/region failures.",
-          "Reliability": "Multiple copies increase availability."
+          "Resilience": "ensures recovery from disasters and regional outages.",
+          "Reliability": "provides recovery paths to sustain service during failures."
         }
       },
       "Disaster recovery orchestration (failover/failback)": {
         "index": "HP17_3",
         "QAs": {
-          "Resilience": "Coordinated recovery reduces downtime.",
-          "Maintainability": "Runbooks as code lower error rate."
+          "Resilience": "contains faults and supports controlled recovery.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "RPO/RTO objectives & testing": {
         "index": "HP17_4",
         "QAs": {
-          "Reliability": "Measured goals prevent surprises."
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Application-consistent backups": {
         "index": "HP17_5",
         "QAs": {
-          "Reliability": "Quiesced state yields usable restores."
+          "Reliability": "provides recovery paths to sustain service during failures."
         }
       },
       "Backup encryption & immutability (WORM)": {
         "index": "HP17_6",
         "QAs": {
-          "Security": "Protects backups from tampering/ransomware."
+          "Security": "prevents tampering with backups for ransomware resistance."
         }
       }
     }
@@ -884,36 +884,36 @@
       "Multi-cluster service discovery & DNS": {
         "index": "HP18_1",
         "QAs": {
-          "Reliability": "Routes to healthy regional endpoints.",
-          "Portability": "Uniform discovery across sites."
+          "Reliability": "routes around failures via service discovery.",
+          "Portability": "keeps implementations consistent across environments."
         }
       },
       "Cross-cluster workload placement & scheduling": {
         "index": "HP18_2",
         "QAs": {
-          "Scalability": "Spreads load across clusters.",
-          "Efficiency": "Places close to data/users."
+          "Scalability": "enables safe horizontal and vertical scaling.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Federation & policy propagation": {
         "index": "HP18_3",
         "QAs": {
-          "Maintainability": "Single source of truth for policy.",
-          "Security": "Consistent RBAC across clusters."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Security": "blocks non\u2011compliant artifacts via policy enforcement."
         }
       },
       "Global traffic management & failover": {
         "index": "HP18_4",
         "QAs": {
-          "Resilience": "Failover away from impacted regions.",
-          "Performance": "Directs users to nearest healthy site."
+          "Resilience": "contains faults and supports controlled recovery.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Identity & trust federation across clusters": {
         "index": "HP18_5",
         "QAs": {
-          "Security": "Shared trust domains for workloads.",
-          "Reliability": "Stable auth across regions."
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       }
     }
@@ -924,50 +924,50 @@
       "Self-service portals & UIs": {
         "index": "HP19_1",
         "QAs": {
-          "Efficiency": "Removes tickets and handoffs.",
-          "Scalability": "Supports many teams in parallel."
+          "Efficiency": "cuts waste and improves resource utilization.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       },
       "Golden paths & service templates": {
         "index": "HP19_2",
         "QAs": {
-          "Maintainability": "Standardization reduces variance.",
-          "Reliability": "Known-good patterns reduce defects."
+          "Maintainability": "standardizes project structure for easier changes.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "On-demand environment provisioning": {
         "index": "HP19_3",
         "QAs": {
-          "Scalability": "Spin up many envs concurrently.",
-          "Efficiency": "Tear down to save cost."
+          "Scalability": "enables safe horizontal and vertical scaling.",
+          "Efficiency": "cuts waste and improves resource utilization."
         }
       },
       "Service catalogs & discoverability": {
         "index": "HP19_4",
         "QAs": {
-          "Maintainability": "Clear ownership and reuse.",
-          "Observability": "Visibility into services and deps."
+          "Maintainability": "standardizes project structure for easier changes.",
+          "Observability": "centralizes logs for debugging and forensics."
         }
       },
       "Guardrails & governance baked-in": {
         "index": "HP19_5",
         "QAs": {
-          "Security": "Defaults enforce policies by design.",
-          "Reliability": "Prevents misconfigured templates."
+          "Security": "tightens controls and reduces exposure to threats.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Unified CI/CD & workflow orchestration": {
         "index": "HP19_6",
         "QAs": {
-          "Efficiency": "One flow replaces bespoke pipelines.",
-          "Maintainability": "Central updates propagate widely."
+          "Efficiency": "cuts waste and improves resource utilization.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "IDP integration frameworks": {
         "index": "HP19_7",
         "QAs": {
-          "Maintainability": "Pluggable architecture eases upgrades.",
-          "Scalability": "Integrates many tools coherently."
+          "Maintainability": "standardizes patterns to simplify change and debugging.",
+          "Scalability": "enables safe horizontal and vertical scaling."
         }
       }
     }
@@ -978,36 +978,36 @@
       "Cost visibility & monitoring": {
         "index": "HP20_1",
         "QAs": {
-          "Efficiency": "Data-driven savings opportunities.",
-          "Observability": "Timely insight into spend drivers."
+          "Efficiency": "identifies waste and drives cost reductions.",
+          "Observability": "exposes signals needed for detection and diagnosis."
         }
       },
       "Cost allocation & chargeback/showback": {
         "index": "HP20_2",
         "QAs": {
-          "Efficiency": "Ownership incentivizes optimization.",
-          "Maintainability": "Clear tagging/labels standardize costs."
+          "Efficiency": "identifies waste and drives cost reductions.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
       "Rightsizing & resource optimization": {
         "index": "HP20_3",
         "QAs": {
-          "Efficiency": "Removes wasteful overprovisioning.",
-          "Performance": "Avoids underprovisioned slowdowns."
+          "Efficiency": "cuts waste and improves resource utilization.",
+          "Performance": "reduces latency and runtime overhead."
         }
       },
       "Reserved capacity & savings plans": {
         "index": "HP20_4",
         "QAs": {
-          "Efficiency": "Discounts reduce unit cost.",
-          "Reliability": "Reserved capacity ensures availability."
+          "Efficiency": "cuts waste and improves resource utilization.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
         }
       },
       "Budget enforcement & anomaly detection": {
         "index": "HP20_5",
         "QAs": {
-          "Efficiency": "Catches overspend early.",
-          "Observability": "Alerts on unusual cost patterns."
+          "Efficiency": "identifies waste and drives cost reductions.",
+          "Observability": "exposes signals needed for detection and diagnosis."
         }
       }
     }

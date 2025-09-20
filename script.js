@@ -184,22 +184,10 @@ const state = {
           const headline = document.createElement('div');
           headline.className = 'sub-headline';
 
-          const pill = document.createElement('span');
-          pill.className = 'index-pill';
-          pill.textContent = sub.index || '—';
-
           const name = document.createElement('span');
           name.textContent = sub.name;
 
-          headline.appendChild(pill);
           headline.appendChild(name);
-
-          if (sub.optional) {
-            const optional = document.createElement('span');
-            optional.className = 'optional-tag';
-            optional.textContent = 'Optional';
-            headline.appendChild(optional);
-          }
 
           const desc = document.createElement('p');
           desc.className = 'sub-desc';
@@ -220,14 +208,14 @@ const state = {
       const modal = document.getElementById('subpractice-modal');
       const titleEl = document.getElementById('modal-title');
       const descEl = document.getElementById('modal-description');
-      const indexEl = document.getElementById('modal-index');
+      const metaEl = document.getElementById('modal-meta');
       const qaSection = document.getElementById('modal-qas-section');
       const qaList = document.getElementById('modal-qas');
       const toolsSection = document.getElementById('modal-tools-section');
       const toolsList = document.getElementById('modal-tools');
 
       titleEl.textContent = sub.name;
-      indexEl.textContent = `${sub.index} · ${hpName}`;
+      metaEl.textContent = hpName;
       descEl.textContent = sub.description || 'No description documented yet.';
 
       qaList.innerHTML = '';

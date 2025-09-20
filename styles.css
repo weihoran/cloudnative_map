@@ -26,7 +26,7 @@
     }
 
     .hero {
-      padding: 48px 6vw 32px;
+      padding: 44px 6vw 28px;
       position: relative;
       overflow: hidden;
     }
@@ -44,12 +44,11 @@
 
     .hero-content {
       position: relative;
-      max-width: 960px;
       z-index: 1;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-size: clamp(1.75rem, 2.6vw, 2.6rem);
       font-weight: 700;
       margin: 0 0 16px;
       letter-spacing: -0.02em;
@@ -57,8 +56,7 @@
 
     .hero p {
       margin: 0;
-      max-width: 680px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.7;
       color: var(--text-muted);
     }
@@ -70,9 +68,9 @@
 
     .stats-grid {
       display: grid;
-      gap: 20px;
+      gap: 18px;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      margin-top: -40px;
+      margin-top: 16px;
       position: relative;
       z-index: 2;
     }
@@ -80,7 +78,7 @@
     .stat-card {
       background: linear-gradient(160deg, rgba(30, 64, 175, 0.6), rgba(15, 23, 42, 0.85));
       border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 22px;
+      padding: 20px;
       border-radius: 18px;
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
@@ -91,7 +89,7 @@
     }
 
     .stat-value {
-      font-size: 1.9rem;
+      font-size: 1.7rem;
       font-weight: 700;
       margin-bottom: 6px;
     }
@@ -125,16 +123,16 @@
 
     .hp-grid {
       display: grid;
-      gap: 20px;
+      gap: 18px;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       align-items: start;
     }
 
     .hp-card {
-      border-radius: 16px;
+      border-radius: 15px;
       border: 1px solid var(--border);
       background: linear-gradient(155deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
-      padding: 18px 20px;
+      padding: 16px 18px;
       position: relative;
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
       display: flex;
@@ -150,13 +148,13 @@
     }
 
     .hp-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
       margin: 0 0 8px;
     }
 
     .hp-meta {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -212,31 +210,15 @@
     }
 
     .index-pill {
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: var(--accent-muted);
-      color: var(--accent);
-      padding: 4px 10px;
-      border-radius: 999px;
+      display: none;
     }
 
     .sub-desc {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       color: var(--text-muted);
       line-height: 1.55;
     }
 
-    .optional-tag {
-      font-size: 0.75rem;
-      padding: 3px 8px;
-      border-radius: 8px;
-      background: rgba(244, 114, 182, 0.18);
-      color: rgba(244, 114, 182, 0.9);
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
 
     .modal-backdrop {
       position: fixed;
@@ -276,9 +258,16 @@
       justify-content: space-between;
     }
 
+    .modal-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.75);
+    }
+
     .modal-title {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: -0.01em;
     }
@@ -322,7 +311,7 @@
 
     .qa-rationale {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       line-height: 1.6;
     }
 

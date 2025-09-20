@@ -20,10 +20,6 @@
         "name": "Container Runtime Management"
       },
       {
-        "id": "HP9",
-        "name": "Streaming & Messaging"
-      },
-      {
         "id": "HP10",
         "name": "Serverless Computing"
       },
@@ -60,6 +56,10 @@
       {
         "id": "HP7",
         "name": "Continuous Integration & Delivery"
+      },
+      {
+        "id": "HP9",
+        "name": "Streaming & Messaging"
       },
       {
         "id": "HP11",
