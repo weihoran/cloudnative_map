@@ -26,7 +26,7 @@
     }
 
     .hero {
-      padding: 64px 8vw 48px;
+      padding: 48px 6vw 32px;
       position: relative;
       overflow: hidden;
     }
@@ -49,7 +49,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-size: clamp(2rem, 3.2vw, 3rem);
       font-weight: 700;
       margin: 0 0 16px;
       letter-spacing: -0.02em;
@@ -57,22 +57,22 @@
 
     .hero p {
       margin: 0;
-      max-width: 720px;
-      font-size: 1.05rem;
+      max-width: 680px;
+      font-size: 0.95rem;
       line-height: 1.7;
       color: var(--text-muted);
     }
 
     main {
       flex: 1;
-      padding: 0 8vw 120px;
+      padding: 0 6vw 96px;
     }
 
     .stats-grid {
       display: grid;
-      gap: 24px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: -72px;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-top: -40px;
       position: relative;
       z-index: 2;
     }
@@ -80,7 +80,7 @@
     .stat-card {
       background: linear-gradient(160deg, rgba(30, 64, 175, 0.6), rgba(15, 23, 42, 0.85));
       border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 28px;
+      padding: 22px;
       border-radius: 18px;
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
@@ -91,25 +91,25 @@
     }
 
     .stat-value {
-      font-size: 2.25rem;
+      font-size: 1.9rem;
       font-weight: 700;
       margin-bottom: 6px;
     }
 
     .stat-label {
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
       color: rgba(226, 232, 240, 0.7);
     }
 
     .layers-section {
-      margin-top: 72px;
+      margin-top: 56px;
     }
 
     .layers-section h2 {
-      font-size: 1.75rem;
-      margin-bottom: 24px;
+      font-size: 1.45rem;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -127,19 +127,22 @@
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      align-items: start;
     }
 
     .hp-card {
-      border-radius: 18px;
+      border-radius: 16px;
       border: 1px solid var(--border);
       background: linear-gradient(155deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
-      padding: 22px 24px;
+      padding: 18px 20px;
       position: relative;
-      cursor: pointer;
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .hp-card:hover, .hp-card:focus-visible {
+    .hp-card:hover, .hp-card:focus-within {
       transform: translateY(-4px);
       border-color: rgba(56, 189, 248, 0.6);
       box-shadow: 0 18px 32px rgba(8, 47, 73, 0.45);
@@ -147,36 +150,44 @@
     }
 
     .hp-title {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 600;
       margin: 0 0 8px;
     }
 
     .hp-meta {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
     }
 
     .hp-card button.hp-toggle {
       all: unset;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
       width: 100%;
-      height: 100%;
       cursor: pointer;
     }
 
+    .hp-card button.hp-toggle:focus-visible {
+      outline: 2px solid rgba(56, 189, 248, 0.6);
+      outline-offset: 4px;
+    }
+
+
     .subpractice-list {
-      margin-top: 20px;
+      margin-top: 16px;
       border-top: 1px solid rgba(148, 163, 184, 0.15);
-      padding-top: 16px;
+      padding-top: 14px;
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .sub-item {
       background: var(--card);
-      border-radius: 16px;
-      padding: 16px 18px;
+      border-radius: 14px;
+      padding: 14px 16px;
       border: 1px solid rgba(148, 163, 184, 0.1);
       transition: border-color 150ms ease;
     }
@@ -194,9 +205,9 @@
     .sub-headline {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       letter-spacing: -0.01em;
     }
 
@@ -211,7 +222,7 @@
     }
 
     .sub-desc {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.55;
     }
@@ -376,16 +387,16 @@
 
     @media (max-width: 720px) {
       .hero {
-        padding: 56px 6vw 48px;
+        padding: 42px 5vw 28px;
       }
 
       main {
-        padding: 0 6vw 96px;
+        padding: 0 5vw 72px;
       }
 
       .stats-grid {
-        margin-top: -48px;
-        gap: 18px;
+        margin-top: -24px;
+        gap: 16px;
       }
 
       .hp-grid {
@@ -393,6 +404,6 @@
       }
 
       .modal {
-        padding: 22px;
+        padding: 20px;
       }
     }
