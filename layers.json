@@ -7,8 +7,8 @@
         "name": "Infrastructure as Code"
       },
       {
-        "id": "HP18",
-        "name": "Multi-Cluster & Multi-Region"
+        "id": "HP15",
+        "name": "Identity & Access Management"
       }
     ]
   },
@@ -43,6 +43,10 @@
       {
         "id": "HP5",
         "name": "Ingress & API Gateway"
+      },
+            {
+        "id": "HP18",
+        "name": "Multi-Cluster & Multi-Region"
       }
     ]
   },
@@ -91,10 +95,6 @@
   {
     "layer": "Cross-Cutting Concerns",
     "practices": [
-      {
-        "id": "HP15",
-        "name": "Identity & Access Management"
-      },
       {
         "id": "HP16",
         "name": "Compliance & Governance"
