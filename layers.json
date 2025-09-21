@@ -22,10 +22,6 @@
       {
         "id": "HP10",
         "name": "Serverless Computing"
-      },
-      {
-        "id": "HP12",
-        "name": "Data Management & Persistence"
       }
     ]
   },
@@ -85,10 +81,6 @@
       {
         "id": "HP13",
         "name": "Chaos Engineering"
-      },
-      {
-        "id": "HP14",
-        "name": "Performance Engineering"
       }
     ]
   },
@@ -100,8 +92,16 @@
         "name": "Compliance & Governance"
       },
       {
+        "id": "HP12",
+        "name": "Data Management & Persistence"
+      },
+      {
         "id": "HP17",
         "name": "Data Protection & Disaster Recovery"
+      },
+      {
+        "id": "HP14",
+        "name": "Performance Engineering"
       },
       {
         "id": "HP20",
