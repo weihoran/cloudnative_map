@@ -124,7 +124,7 @@
           "Performance": "reduces latency and runtime overhead."
         }
       },
-      "Resource management": {
+      "Resource management (requests/limits/quotas)": {
         "index": "HP3_2",
         "QAs": {
           "Reliability": "makes behavior predictable and reduces failure modes.",
@@ -738,49 +738,61 @@
   "HP15": {
     "name": "Identity & Access Management",
     "qas": {
-      "Authentication (AuthN)": {
+      "Federated authentication & SSO": {
         "index": "HP15_1",
-        "QAs": {
-          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
-          "Reliability": "makes behavior predictable and reduces failure modes."
-        }
-      },
-      "Authorization (AuthZ) & policy enforcement": {
-        "index": "HP15_2",
-        "QAs": {
-          "Security": "blocks non\u2011compliant artifacts via policy enforcement.",
-          "Maintainability": "standardizes patterns to simplify change and debugging."
-        }
-      },
-      "Secrets management": {
-        "index": "HP15_3",
-        "QAs": {
-          "Security": "protects secrets and keys with managed storage and rotation.",
-          "Reliability": "makes behavior predictable and reduces failure modes."
-        }
-      },
-      "Workload identity (short-lived certs/tokens, SPIFFE/SPIRE)": {
-        "index": "HP15_4",
-        "QAs": {
-          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
-          "Portability": "keeps implementations consistent across environments."
-        }
-      },
-      "Identity federation (SSO, OIDC, SAML, OAuth2)": {
-        "index": "HP15_5",
         "QAs": {
           "Portability": "keeps implementations consistent across environments.",
           "Maintainability": "standardizes patterns to simplify change and debugging."
         }
       },
-      "Credential rotation & lifecycle management": {
+      "Multi-factor & passwordless authentication": {
+        "index": "HP15_2",
+        "QAs": {
+          "Security": "reduces account takeover and phishing risk."
+        }
+      },
+      "Workload identity & short-lived credentials": {
+        "index": "HP15_3",
+        "QAs": {
+          "Security": "encrypts and authenticates service\u2011to\u2011service traffic with mTLS.",
+          "Portability": "keeps implementations consistent across environments."
+        }
+      },
+      "Role- & attribute-based access control": {
+        "index": "HP15_4",
+        "QAs": {
+          "Security": "enforces least privilege and blocks unauthorized actions.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
+        }
+      },
+      "Policy-as-Code enforcement": {
+        "index": "HP15_5",
+        "QAs": {
+          "Security": "codifies access rules to prevent drift and misuse.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
+        }
+      },
+      "Secrets & key management": {
         "index": "HP15_6",
+        "QAs": {
+          "Security": "protects secrets and keys with managed storage and rotation.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
+        }
+      },
+      "Credential rotation & lifecycle management": {
+        "index": "HP15_7",
         "QAs": {
           "Security": "tightens controls and reduces exposure to threats."
         }
       },
-      "Audit logging & access visibility": {
+      "Just-in-time & ephemeral access": {
         "index": "HP15_8",
+        "QAs": {
+          "Security": "reduces standing privileges and blast radius."
+        }
+      },
+      "Audit logging & access visibility": {
+        "index": "HP15_9",
         "QAs": {
           "Observability": "centralizes logs for debugging and forensics.",
           "Security": "records security\u2011relevant events for investigations."
@@ -805,7 +817,7 @@
           "Observability": "exposes signals needed for detection and diagnosis."
         }
       },
-      "Continuous compliance scanning (IaC + runtime)": {
+      "Continuous compliance monitoring (IaC + runtime)": {
         "index": "HP16_3",
         "QAs": {
           "Security": "detects known CVEs and misconfigurations before release.",

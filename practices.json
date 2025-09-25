@@ -35,7 +35,7 @@
       },
       {
         "index": "HP1_4",
-        "name": "Vulnerability scanning",
+        "name": "Container vulnerability scanning",
         "description": "Scan container images for known vulnerabilities and misconfigurations during build and pre-deploy.",
         "tools": [
           "Trivy",
@@ -1400,119 +1400,117 @@
     ]
   },
   "HP15": {
-    "name": "Identity & Access Management",
-    "sub_practices": [
-      {
-        "index": "HP15_1",
-        "name": "Authentication (AuthN)",
-        "description": "Authenticate users and services with federated identity and MFA as needed.",
-        "tools": [
-          "Keycloak",
-          "Dex",
-          "Auth0",
-          "Okta",
-          "AWS Cognito",
-          "Azure AD",
-          "Google IAM"
-        ]
-      },
-      {
-        "index": "HP15_2",
-        "name": "Authorization (AuthZ) & policy enforcement",
-        "description": "Apply fine-grained access controls using role-, attribute-, or relationship-based models.",
-        "tools": [
-          "Kubernetes RBAC",
-          "OPA/Gatekeeper",
-          "AWS IAM policies",
-          "Azure RBAC",
-          "Google IAM conditions"
-        ]
-      },
-      {
-        "index": "HP15_3",
-        "name": "Secrets management",
-        "description": "Store, rotate, and broker secrets and keys securely to workloads and users.",
-        "tools": [
-          "HashiCorp Vault",
-          "AWS Secrets Manager",
-          "Azure Key Vault",
-          "Google Secret Manager",
-          "SOPS",
-          "External Secrets Operator"
-        ]
-      },
-      {
-        "index": "HP15_4",
-        "name": "Workload identity (short-lived certs/tokens, SPIFFE/SPIRE)",
-        "description": "Issue short-lived workload identities for zero-trust authentication across systems.",
-        "tools": [
-          "SPIFFE/SPIRE",
-          "Istio identity",
-          "AWS IRSA",
-          "GCP Workload Identity"
-        ]
-      },
-      {
-        "index": "HP15_5",
-        "name": "Identity federation (SSO, OIDC, SAML, OAuth2)",
-        "description": "Connect identity providers to enable single sign-on across platforms.",
-        "tools": [
-          "Keycloak",
-          "Auth0",
-          "Okta",
-          "Dex",
-          "AWS IAM Identity Center (SSO)",
-          "Azure AD"
-        ]
-      },
-      {
-        "index": "HP15_6",
-        "name": "Credential rotation & lifecycle management",
-        "description": "Automate key and token rotation with strict expiry and revocation processes.",
-        "tools": [
-          "Vault dynamic secrets",
-          "AWS IAM key rotation",
-          "Azure AD PIM",
-          "GCP IAM key rotation"
-        ]
-      },
-      {
-        "index": "HP15_7",
-        "name": "Just-in-time (JIT) & least-privilege access",
-        "description": "Grant ephemeral access with minimal privileges on demand and audit the use.",
-        "tools": [
-          "HashiCorp Vault",
-          "Azure AD PIM",
-          "BeyondCorp"
-        ],
-        "optional": true
-      },
-      {
-        "index": "HP15_8",
-        "name": "Audit logging & access visibility",
-        "description": "Record and analyze access decisions and identity events for compliance and forensics.",
-        "tools": [
-          "AWS CloudTrail",
-          "Azure Monitor",
-          "GCP Audit Logs",
-          "Vault audit logs",
-          "OPA decision logs"
-        ]
-      },
-      {
-        "index": "HP15_9",
-        "name": "Passwordless & hardware-backed authentication",
-        "description": "Adopt phishing-resistant authentication with WebAuthn and security keys.",
-        "tools": [
-          "WebAuthn/FIDO2",
-          "YubiKey",
-          "Azure AD Passkeys",
-          "Okta FastPass"
-        ],
-        "optional": true
-      }
-    ]
+  "name": "Identity & Access Management",
+  "sub_practices": [
+    {
+      "index": "HP15_1",
+      "name": "Federated authentication & SSO",
+      "description": "Authenticate users via external identity providers with OIDC/SAML/OAuth2; enable single sign-on across platforms.",
+      "tools": [
+        "Keycloak",
+        "Dex",
+        "Auth0",
+        "Okta",
+        "AWS IAM Identity Center (SSO)",
+        "Azure AD"
+      ]
+    },
+    {
+      "index": "HP15_2",
+      "name": "Multi-factor & passwordless authentication",
+      "description": "Strengthen login security with MFA and hardware-backed methods (e.g., WebAuthn/FIDO2).",
+      "tools": [
+        "WebAuthn/FIDO2",
+        "YubiKey",
+        "Okta FastPass",
+        "Azure AD Passkeys",
+        "Google Titan Key"
+      ]
+    },
+    {
+      "index": "HP15_3",
+      "name": "Workload identity & short-lived credentials",
+      "description": "Issue ephemeral identities for services and workloads (e.g., SPIFFE/SPIRE, IRSA) to enforce zero-trust authentication.",
+      "tools": [
+        "SPIFFE/SPIRE",
+        "Istio identity",
+        "AWS IRSA",
+        "GCP Workload Identity"
+      ]
+    },
+    {
+      "index": "HP15_4",
+      "name": "Role- & attribute-based access control",
+      "description": "Enforce least-privilege access using RBAC/ABAC policies at infrastructure, platform, and application levels.",
+      "tools": [
+        "Kubernetes RBAC",
+        "OPA/Gatekeeper",
+        "AWS IAM policies",
+        "Azure RBAC",
+        "Google IAM conditions"
+      ]
+    },
+    {
+      "index": "HP15_5",
+      "name": "Policy-as-Code enforcement",
+      "description": "Automate evaluation of identity and access rules using declarative, code-based policies.",
+      "tools": [
+        "OPA/Gatekeeper",
+        "Kyverno",
+        "Cedar",
+        "AWS IAM policy validator"
+      ]
+    },
+    {
+      "index": "HP15_6",
+      "name": "Secrets & key management",
+      "description": "Securely store, rotate, and broker access to secrets, API keys, and encryption keys.",
+      "tools": [
+        "HashiCorp Vault",
+        "AWS Secrets Manager",
+        "Azure Key Vault",
+        "Google Secret Manager",
+        "SOPS",
+        "External Secrets Operator"
+      ]
+    },
+    {
+      "index": "HP15_7",
+      "name": "Credential rotation & lifecycle management",
+      "description": "Automate key and token rotation, enforce strict expiration, and revoke unused credentials.",
+      "tools": [
+        "Vault dynamic secrets",
+        "AWS IAM key rotation",
+        "Azure AD PIM",
+        "GCP IAM key rotation"
+      ]
+    },
+    {
+      "index": "HP15_8",
+      "name": "Just-in-time & ephemeral access",
+      "description": "Grant temporary, least-privilege access on demand and enforce auditing of its use.",
+      "tools": [
+        "HashiCorp Vault",
+        "Azure AD PIM",
+        "BeyondCorp"
+      ],
+      "optional": true
+    },
+    {
+      "index": "HP15_9",
+      "name": "Audit logging & access visibility",
+      "description": "Record and analyze access decisions, privilege escalations, and identity events for compliance and forensics.",
+      "tools": [
+        "AWS CloudTrail",
+        "Azure Monitor",
+        "GCP Audit Logs",
+        "Vault audit logs",
+        "OPA decision logs"
+      ]
+    }
+  ]
   },
+  
   "HP16": {
     "name": "Compliance & Governance",
     "sub_practices": [

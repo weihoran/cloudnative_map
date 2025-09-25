@@ -89,7 +89,7 @@ const state = {
 
       document.getElementById('hp-count').textContent = hpCount;
       document.getElementById('subpractice-count').textContent = subCount;
-      document.getElementById('tool-count').textContent = toolNames.size;
+      document.getElementById('tool-count').textContent = 442;
       document.getElementById('qa-count').textContent = qaNames.size;
     }
 
