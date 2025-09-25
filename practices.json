@@ -105,6 +105,7 @@
         ],
         "optional": true
       }
+      
     ]
   },
   "HP2": {
@@ -444,6 +445,16 @@
           "Consul WAN federation"
         ],
         "optional": true
+      },
+      {
+        "index": "HP4_12",
+        "name": "Rate limiting & quotas (service-to-service)",
+        "description": "Throttle and quota service-to-service traffic with identity-aware, policy-driven limits.",
+        "tools": [
+          "Envoy rate limit service",
+          "Istio EnvoyFilter / Wasm rate limiting",
+          "Kuma policies"
+        ]
       }
     ]
   },
@@ -731,6 +742,28 @@
           "Syft/Anchore"
         ],
         "optional": true
+      },
+      {
+        "index": "HP7_9",
+        "name": "Software composition analysis (SCA)",
+        "description": "Analyze dependencies for known vulnerabilities and licenses as part of CI/CD.",
+        "tools": [
+          "Snyk",
+          "OWASP Dependency-Check",
+          "Trivy",
+          "Mend/WhiteSource"
+        ]
+      },
+      {
+        "index": "HP7_10",
+        "name": "Static application security testing (SAST)",
+        "description": "Scan source and binaries to detect insecure patterns, taint flows, and coding flaws.",
+        "tools": [
+          "Semgrep",
+          "CodeQL",
+          "SonarQube",
+          "Bandit"
+        ]
       }
     ]
   },
@@ -823,6 +856,17 @@
           "Instana"
         ],
         "optional": true
+      },
+      {
+        "index": "HP8_9",
+        "name": "Open standards (OpenTelemetry)",
+        "description": "Adopt OpenTelemetry for consistent metrics, traces, and logs with portable OTLP pipelines.",
+        "tools": [
+          "OpenTelemetry SDKs",
+          "OpenTelemetry Collector",
+          "OTLP",
+          "W3C Trace Context"
+        ]
       }
     ]
   },
@@ -1113,6 +1157,16 @@
           "Custom adapters"
         ],
         "optional": true
+      },
+      {
+        "index": "HP11_10",
+        "name": "Connection pooling & concurrency limits",
+        "description": "Use bounded pools, bulkheads, and queue limits to cap concurrency and protect shared resources.",
+        "tools": [
+          "Resilience4j Bulkhead",
+          "Envoy circuit breaking",
+          "HikariCP"
+        ]
       }
     ]
   },

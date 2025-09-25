@@ -242,6 +242,13 @@
           "Observability": "exposes signals needed for detection and diagnosis.",
           "Maintainability": "standardizes patterns to simplify change and debugging."
         }
+      },
+      "Rate limiting & quotas (service-to-service)": {
+        "index": "HP4_12",
+        "QAs": {
+          "Resilience": "contains faults and supports controlled recovery.",
+          "Reliability": "makes behavior predictable and reduces failure modes."
+        }
       }
     }
   },
@@ -392,6 +399,20 @@
           "Observability": "exposes signals needed for detection and diagnosis.",
           "Security": "tightens controls and reduces exposure to threats."
         }
+      },
+      "Software composition analysis (SCA)": {
+        "index": "HP7_9",
+        "QAs": {
+          "Security": "detects known CVEs and license risks early in CI.",
+          "Maintainability": "clarifies dependencies to plan safe upgrades."
+        }
+      },
+      "Static application security testing (SAST)": {
+        "index": "HP7_10",
+        "QAs": {
+          "Security": "identifies insecure code paths before release.",
+          "Maintainability": "standardizes patterns to simplify change and debugging."
+        }
       }
     }
   },
@@ -444,6 +465,13 @@
         "QAs": {
           "Observability": "exposes signals needed for detection and diagnosis.",
           "Efficiency": "cuts waste and improves resource utilization."
+        }
+      },
+      "Open standards (OpenTelemetry)": {
+        "index": "HP8_9",
+        "QAs": {
+          "Observability": "unifies telemetry across metrics, traces, and logs.",
+          "Portability": "keeps implementations consistent across environments."
         }
       }
     }
@@ -599,6 +627,13 @@
         "QAs": {
           "Maintainability": "standardizes project structure for easier changes.",
           "Efficiency": "reuses standards and components to minimize toil."
+        }
+      },
+      "Connection pooling & concurrency limits": {
+        "index": "HP11_10",
+        "QAs": {
+          "Performance": "reduces tail latency by capping contention and queueing.",
+          "Resilience": "contains overload and prevents cascading failures."
         }
       }
     }
